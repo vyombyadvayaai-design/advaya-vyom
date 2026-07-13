@@ -31,7 +31,8 @@ import {
 import heroImg from "@/assets/vyom-hero.png.asset.json";
 import angleImg from "@/assets/vyom-angle.png.asset.json";
 import gridImg from "@/assets/vyom-grid.png.asset.json";
-import founderImg from "@/assets/founder.jpg";
+import founderAsset from "@/assets/founder.png.asset.json";
+const founderImg = founderAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
