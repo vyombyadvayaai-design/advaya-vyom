@@ -77,21 +77,38 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { name: "theme-color", content: "#050505" },
+      { title: "VYOM by Advaya.ai — The Future of AI You'll Wear" },
+      {
+        name: "description",
+        content:
+          "VYOM is an AI-first wearable platform in development by Advaya.ai. Built in India with global ambitions to make artificial intelligence feel natural, intuitive, and always available.",
+      },
+      { name: "author", content: "Advaya.ai" },
+      { property: "og:title", content: "VYOM by Advaya.ai — The Future of AI You'll Wear" },
+      {
+        property: "og:description",
+        content:
+          "An AI-first wearable platform being developed in India. Join the journey.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Advaya.ai" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "VYOM by Advaya.ai" },
+      {
+        name: "twitter:description",
+        content: "The Future of AI You'll Wear. In development.",
+      },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,
