@@ -872,7 +872,7 @@ function Contact() {
                   <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
                     Location
                   </div>
-                  <div className="mt-1 text-lg text-foreground">Bengaluru · India</div>
+                  <div className="mt-1 text-lg text-foreground">Lucknow, Uttar Pradesh · India</div>
                 </div>
                 <MapPin className="h-5 w-5 text-accent" strokeWidth={1.5} />
               </div>
