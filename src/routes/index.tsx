@@ -33,10 +33,8 @@ import angleImg from "@/assets/vyom-angle.png.asset.json";
 import gridImg from "@/assets/vyom-grid.png.asset.json";
 import founderAsset from "@/assets/founder.png.asset.json";
 import logoWordmarkAsset from "@/assets/vyom-logo-wordmark.png.asset.json";
-import logoEmblemAsset from "@/assets/vyom-logo-emblem.png.asset.json";
 const founderImg = founderAsset.url;
 const logoWordmark = logoWordmarkAsset.url;
-const logoEmblem = logoEmblemAsset.url;
 
 
 export const Route = createFileRoute("/")({
@@ -119,12 +117,6 @@ function Nav() {
           }`}
         >
           <a href="#top" className="flex items-center gap-3">
-            <img
-              src={logoEmblem}
-              alt="VYOM emblem"
-              className="h-8 w-8 object-contain"
-              loading="eager"
-            />
             <img
               src={logoWordmark}
               alt="VYOM — You Expressed, I Do."
@@ -903,12 +895,6 @@ function Footer() {
     <footer className="border-t border-white/5 py-10">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 md:flex-row">
         <div className="flex items-center gap-3">
-          <img
-            src={logoEmblem}
-            alt="VYOM emblem"
-            className="h-7 w-7 object-contain"
-            loading="lazy"
-          />
           <img
             src={logoWordmark}
             alt="VYOM"
