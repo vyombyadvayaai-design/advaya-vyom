@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "advaya-vyom-mcp",
+      "version": "0.1.0",
+      "title": "Advaya.ai · VYOM"
+    },
+    "tools": [
+      {
+        "name": "get_company_info",
+        "title": "Get Advaya.ai company info",
+        "description": "Returns public information about Advaya.ai and its flagship product VYOM, including current stage, vision, and contact details.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_waitlist_link",
+        "title": "Get VYOM waitlist link",
+        "description": "Returns the URL where a user can join the VYOM smart glasses waitlist and be notified about launch and early-access updates.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
