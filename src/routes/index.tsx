@@ -32,7 +32,12 @@ import heroImg from "@/assets/vyom-hero.png.asset.json";
 import angleImg from "@/assets/vyom-angle.png.asset.json";
 import gridImg from "@/assets/vyom-grid.png.asset.json";
 import founderAsset from "@/assets/founder.png.asset.json";
+import logoWordmarkAsset from "@/assets/vyom-logo-wordmark.png.asset.json";
+import logoEmblemAsset from "@/assets/vyom-logo-emblem.png.asset.json";
 const founderImg = founderAsset.url;
+const logoWordmark = logoWordmarkAsset.url;
+const logoEmblem = logoEmblemAsset.url;
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -113,10 +118,19 @@ function Nav() {
             scrolled ? "glass-strong" : ""
           }`}
         >
-          <a href="#top" className="flex items-center gap-2">
-            <span className="font-display text-xl tracking-[0.35em] text-foreground">
-              VYOM
-            </span>
+          <a href="#top" className="flex items-center gap-3">
+            <img
+              src={logoEmblem}
+              alt="VYOM emblem"
+              className="h-8 w-8 object-contain"
+              loading="eager"
+            />
+            <img
+              src={logoWordmark}
+              alt="VYOM — You Expressed, I Do."
+              className="h-5 w-auto object-contain"
+              loading="eager"
+            />
             <span className="hidden text-[10px] uppercase tracking-[0.3em] text-muted-foreground md:inline">
               by Advaya.ai
             </span>
@@ -889,7 +903,18 @@ function Footer() {
     <footer className="border-t border-white/5 py-10">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 md:flex-row">
         <div className="flex items-center gap-3">
-          <span className="font-display text-lg tracking-[0.35em]">VYOM</span>
+          <img
+            src={logoEmblem}
+            alt="VYOM emblem"
+            className="h-7 w-7 object-contain"
+            loading="lazy"
+          />
+          <img
+            src={logoWordmark}
+            alt="VYOM"
+            className="h-4 w-auto object-contain"
+            loading="lazy"
+          />
           <span className="text-xs uppercase tracking-[0.28em] text-muted-foreground">
             by Advaya.ai
           </span>
