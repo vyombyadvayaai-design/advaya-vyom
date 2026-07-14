@@ -132,6 +132,7 @@ function Nav() {
             <a href="#product" className="transition hover:text-foreground">Product</a>
             <a href="#roadmap" className="transition hover:text-foreground">Roadmap</a>
             <a href="#founder" className="transition hover:text-foreground">Founder</a>
+            <a href="/press-kit" className="transition hover:text-foreground">Press Kit</a>
             <a href="#contact" className="transition hover:text-foreground">Contact</a>
           </nav>
           <a href="#waitlist" className="btn-primary text-sm">
