@@ -648,14 +648,26 @@ function Founder() {
             <SectionLabel>Founder</SectionLabel>
             <blockquote className="font-display text-balance text-[clamp(1.75rem,3.6vw,3rem)] leading-[1.12] tracking-[-0.01em] text-gradient">
               <span className="mr-2 text-accent">"</span>
-              We are not building another gadget. We are building the future of{" "}
-              <span className="italic">wearable intelligence</span> from India.
+              The future of computing won't stay in our hands — it will become part of how we see, think, and interact with the world.
               <span className="ml-1 text-accent">"</span>
             </blockquote>
-            <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
-              Advaya.ai is a deep-tech company incubated in India, focused on the
-              intersection of hardware, human interface, and applied AI.
-            </p>
+            <div className="mt-8 space-y-4 text-sm leading-relaxed text-muted-foreground">
+              <p className="text-foreground">
+                <span className="font-medium">Ashutosh Yadav</span> — Founder, Advaya.ai & VYOM
+              </p>
+              <p>
+                Ashutosh Yadav is an Indian entrepreneur and technology enthusiast building the future of AI-powered wearable computing.
+              </p>
+              <p>
+                He founded Advaya.ai with a vision of making artificial intelligence more natural, accessible, and useful in everyday life. Under Advaya.ai, he is building VYOM — an AI smart glasses platform designed to help people learn, create, communicate, and work more efficiently through intelligent, hands-free experiences.
+              </p>
+              <p>
+                Driven by the belief that technology should empower people rather than distract them, Ashutosh is focused on creating products that combine cutting-edge AI with thoughtful design and exceptional user experience.
+              </p>
+              <p>
+                His long-term mission is to build globally recognized AI products from India that improve productivity, learning, and problem-solving for millions of people around the world.
+              </p>
+            </div>
           </FadeIn>
         </div>
       </div>
