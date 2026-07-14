@@ -771,10 +771,10 @@ function Waitlist() {
 /* ---------------------------------------------------------------- */
 function Media() {
   const cards = [
-    { icon: FileText, t: "Pitch Deck", s: "Coming Soon" },
-    { icon: Newspaper, t: "Press Kit", s: "Coming Soon" },
-    { icon: Briefcase, t: "Careers", s: "Coming Soon" },
-    { icon: BookOpen, t: "Blog", s: "Read" },
+    { icon: FileText, t: "Pitch Deck", s: "Coming Soon", href: "#" },
+    { icon: Newspaper, t: "Press Kit", s: "View", href: "/press-kit" },
+    { icon: Briefcase, t: "Careers", s: "Coming Soon", href: "#" },
+    { icon: BookOpen, t: "Blog", s: "Coming Soon", href: "#" },
   ];
   return (
     <section className="section-pad relative">
@@ -789,7 +789,7 @@ function Media() {
           {cards.map((c, i) => (
             <FadeIn key={c.t} delay={i * 0.04}>
               <a
-                href="#"
+                href={c.href}
                 className="group glass block rounded-2xl p-6 transition hover:-translate-y-1 hover:border-white/20"
               >
                 <div className="flex items-start justify-between">
