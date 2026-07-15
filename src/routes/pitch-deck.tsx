@@ -880,7 +880,7 @@ function Slide20() {
   );
 }
 
-const SLIDES: { title: string; render: () => JSX.Element }[] = [
+const SLIDES: { title: string; render: () => ReactNode }[] = [
   { title: "Cover", render: Slide01 },
   { title: "Vision", render: Slide02 },
   { title: "The Problem", render: Slide03 },
