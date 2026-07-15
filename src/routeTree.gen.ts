@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PressKitRouteImport } from './routes/press-kit'
+import { Route as PitchDeckRouteImport } from './routes/pitch-deck'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
@@ -19,6 +20,11 @@ import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[
 const PressKitRoute = PressKitRouteImport.update({
   id: '/press-kit',
   path: '/press-kit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PitchDeckRoute = PitchDeckRouteImport.update({
+  id: '/pitch-deck',
+  path: '/pitch-deck',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -53,6 +59,7 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/mcp': typeof McpRoute
+  '/pitch-deck': typeof PitchDeckRoute
   '/press-kit': typeof PressKitRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -61,6 +68,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/mcp': typeof McpRoute
+  '/pitch-deck': typeof PitchDeckRoute
   '/press-kit': typeof PressKitRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/mcp': typeof McpRoute
+  '/pitch-deck': typeof PitchDeckRoute
   '/press-kit': typeof PressKitRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/mcp'
+    | '/pitch-deck'
     | '/press-kit'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/mcp'
+    | '/pitch-deck'
     | '/press-kit'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/mcp'
+    | '/pitch-deck'
     | '/press-kit'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -105,6 +117,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   McpRoute: typeof McpRoute
+  PitchDeckRoute: typeof PitchDeckRoute
   PressKitRoute: typeof PressKitRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -118,6 +131,13 @@ declare module '@tanstack/react-router' {
       path: '/press-kit'
       fullPath: '/press-kit'
       preLoaderRoute: typeof PressKitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pitch-deck': {
+      id: '/pitch-deck'
+      path: '/pitch-deck'
+      fullPath: '/pitch-deck'
+      preLoaderRoute: typeof PitchDeckRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -161,6 +181,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   McpRoute: McpRoute,
+  PitchDeckRoute: PitchDeckRoute,
   PressKitRoute: PressKitRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:

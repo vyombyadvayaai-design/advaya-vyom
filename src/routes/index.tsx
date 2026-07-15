@@ -783,7 +783,7 @@ function Waitlist() {
 /* ---------------------------------------------------------------- */
 function Media() {
   const cards = [
-    { icon: FileText, t: "Pitch Deck", s: "Coming Soon", href: "#" },
+    { icon: FileText, t: "Pitch Deck", s: "View", href: "/pitch-deck" },
     { icon: Newspaper, t: "Press Kit", s: "View", href: "/press-kit" },
     { icon: Briefcase, t: "Careers", s: "Coming Soon", href: "#" },
     { icon: BookOpen, t: "Blog", s: "Coming Soon", href: "#" },
