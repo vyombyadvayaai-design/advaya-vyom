@@ -127,15 +127,16 @@ function Nav() {
               by Advaya.ai
             </span>
           </a>
-          <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-            <a href="#vision" className="transition hover:text-foreground">Vision</a>
-            <a href="#product" className="transition hover:text-foreground">Product</a>
-            <a href="#roadmap" className="transition hover:text-foreground">Roadmap</a>
-            <a href="#founder" className="transition hover:text-foreground">Founder</a>
-            <a href="/press-kit" className="transition hover:text-foreground">Press Kit</a>
-            <a href="#contact" className="transition hover:text-foreground">Contact</a>
+          <nav className="hidden items-center gap-7 text-sm text-muted-foreground lg:flex">
+            <a href="/product" className="transition hover:text-foreground">Product</a>
+            <a href="/vision" className="transition hover:text-foreground">Vision</a>
+            <a href="/technology" className="transition hover:text-foreground">Technology</a>
+            <a href="/ecosystem" className="transition hover:text-foreground">Ecosystem</a>
+            <a href="/company" className="transition hover:text-foreground">Company</a>
+            <a href="/press-kit" className="transition hover:text-foreground">Press</a>
+            <a href="/investors" className="transition hover:text-foreground">Investors</a>
           </nav>
-          <a href="#waitlist" className="btn-primary text-sm">
+          <a href="/waitlist" className="btn-primary text-sm">
             Join Waitlist
           </a>
         </div>
