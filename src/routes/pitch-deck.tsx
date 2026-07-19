@@ -34,9 +34,18 @@ import angleImg from "@/assets/vyom-angle.png.asset.json";
 import gridImg from "@/assets/vyom-grid.png.asset.json";
 import founderAsset from "@/assets/founder.png.asset.json";
 import logoWordmarkAsset from "@/assets/vyom-logo-wordmark.png.asset.json";
+import pitchPdf from "@/assets/pitch_deck.pdf.asset.json";
+import companyProfilePdf from "@/assets/company_profile.pdf.asset.json";
+import founderBookPdf from "@/assets/founder_book.pdf.asset.json";
 
 const founderImg = founderAsset.url;
 const logoWordmark = logoWordmarkAsset.url;
+
+const DOWNLOADS = [
+  { label: "Pitch", href: pitchPdf.url, file: "VYOM-Pitch.pdf" },
+  { label: "Company Profile", href: companyProfilePdf.url, file: "Advaya-Company-Profile.pdf" },
+  { label: "Founder Book", href: founderBookPdf.url, file: "Ashutosh-Yadav.pdf" },
+];
 
 const searchSchema = z.object({
   slide: z.number().int().min(1).max(20).optional().catch(1),
