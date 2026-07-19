@@ -89,20 +89,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "An AI-first wearable platform being developed in India. Join the journey.",
+          "VYOM is an AI-first wearable platform in development by Advaya.ai. Built in India with global ambitions to make artificial intelligence feel natural, intuitive, and always available.",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Advaya.ai" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "VYOM by Advaya.ai" },
+      { name: "twitter:title", content: "VYOM by Advaya.ai — The Future of AI You'll Wear" },
       {
         name: "twitter:description",
-        content: "The Future of AI You'll Wear. In development.",
+        content: "VYOM is an AI-first wearable platform in development by Advaya.ai. Built in India with global ambitions to make artificial intelligence feel natural, intuitive, and always available.",
       },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/209e82ea-16bb-49d4-93a8-068637f3ad6f/id-preview-e3d4fbf9--1310ba31-f8be-4cf7-a16f-b0dace1e8bd3.lovable.app-1784463369193.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/209e82ea-16bb-49d4-93a8-068637f3ad6f/id-preview-e3d4fbf9--1310ba31-f8be-4cf7-a16f-b0dace1e8bd3.lovable.app-1784463369193.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
