@@ -26,6 +26,7 @@ import {
   Compass,
   Sun,
   Mail,
+  Download,
 } from "lucide-react";
 import { z } from "zod";
 import heroImg from "@/assets/vyom-hero.png.asset.json";
@@ -33,9 +34,18 @@ import angleImg from "@/assets/vyom-angle.png.asset.json";
 import gridImg from "@/assets/vyom-grid.png.asset.json";
 import founderAsset from "@/assets/founder.png.asset.json";
 import logoWordmarkAsset from "@/assets/vyom-logo-wordmark.png.asset.json";
+import pitchPdf from "@/assets/pitch_deck.pdf.asset.json";
+import companyProfilePdf from "@/assets/company_profile.pdf.asset.json";
+import founderBookPdf from "@/assets/founder_book.pdf.asset.json";
 
 const founderImg = founderAsset.url;
 const logoWordmark = logoWordmarkAsset.url;
+
+const DOWNLOADS = [
+  { label: "Pitch", href: pitchPdf.url, file: "VYOM-Pitch.pdf" },
+  { label: "Company Profile", href: companyProfilePdf.url, file: "Advaya-Company-Profile.pdf" },
+  { label: "Founder Book", href: founderBookPdf.url, file: "Ashutosh-Yadav.pdf" },
+];
 
 const searchSchema = z.object({
   slide: z.number().int().min(1).max(20).optional().catch(1),
@@ -1366,6 +1376,22 @@ function PitchDeck() {
         </div>
         <div className="h-[2px] bg-white/5">
           <div className="h-full bg-accent transition-[width] duration-500" style={{ width: `${progress}%` }} />
+        </div>
+        <div className="mx-auto max-w-7xl px-6 md:px-12 py-2.5 flex flex-wrap items-center gap-2 justify-center md:justify-end border-t border-white/5">
+          <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground mr-1">Downloads</span>
+          {DOWNLOADS.map((d) => (
+            <a
+              key={d.label}
+              href={d.href}
+              download={d.file}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-foreground/90 transition hover:border-accent/40 hover:bg-white/10"
+            >
+              <Download className="h-3.5 w-3.5" />
+              {d.label}
+            </a>
+          ))}
         </div>
       </div>
 
