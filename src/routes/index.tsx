@@ -28,7 +28,9 @@ import {
   Briefcase,
   BookOpen,
 } from "lucide-react";
+import { SiteNav } from "@/components/site-chrome";
 import heroImg from "@/assets/vyom-hero.png.asset.json";
+
 import angleImg from "@/assets/vyom-angle.png.asset.json";
 import gridImg from "@/assets/vyom-grid.png.asset.json";
 import founderAsset from "@/assets/founder.png.asset.json";
@@ -96,54 +98,8 @@ function Aurora({ intensity = 1 }: { intensity?: number }) {
 /* ---------------------------------------------------------------- */
 /*  Navigation                                                       */
 /* ---------------------------------------------------------------- */
-function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled ? "py-3" : "py-5"
-      }`}
-    >
-      <div className="mx-auto max-w-7xl px-6">
-        <div
-          className={`flex items-center justify-between rounded-full px-5 py-2.5 transition-all duration-500 ${
-            scrolled ? "glass-strong" : ""
-          }`}
-        >
-          <a href="#top" className="flex items-center gap-3">
-            <img
-              src={logoWordmark}
-              alt="VYOM — You Expressed, I Do."
-              className="h-5 w-auto object-contain"
-              loading="eager"
-            />
-            <span className="hidden text-[10px] uppercase tracking-[0.3em] text-muted-foreground md:inline">
-              by Advaya.ai
-            </span>
-          </a>
-          <nav className="hidden items-center gap-7 text-sm text-muted-foreground lg:flex">
-            <a href="/product" className="transition hover:text-foreground">Product</a>
-            <a href="/vision" className="transition hover:text-foreground">Vision</a>
-            <a href="/technology" className="transition hover:text-foreground">Technology</a>
-            <a href="/ecosystem" className="transition hover:text-foreground">Ecosystem</a>
-            <a href="/company" className="transition hover:text-foreground">Company</a>
-            <a href="/press-kit" className="transition hover:text-foreground">Press</a>
-            <a href="/investors" className="transition hover:text-foreground">Investors</a>
-          </nav>
-          <a href="/waitlist" className="btn-primary text-sm">
-            Join Waitlist
-          </a>
-        </div>
-      </div>
-    </header>
-  );
-}
+// Nav is provided by the shared premium SiteNav (hamburger + desktop bar).
+
 
 /* ---------------------------------------------------------------- */
 /*  Hero                                                             */
@@ -939,7 +895,7 @@ function Footer() {
 function Landing() {
   return (
     <main className="relative">
-      <Nav />
+      <SiteNav />
       <Hero />
       <Trust />
       <Problem />
