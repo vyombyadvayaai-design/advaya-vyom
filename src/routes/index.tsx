@@ -28,7 +28,9 @@ import {
   Briefcase,
   BookOpen,
 } from "lucide-react";
+import { SiteNav } from "@/components/site-chrome";
 import heroImg from "@/assets/vyom-hero.png.asset.json";
+
 import angleImg from "@/assets/vyom-angle.png.asset.json";
 import gridImg from "@/assets/vyom-grid.png.asset.json";
 import founderAsset from "@/assets/founder.png.asset.json";
