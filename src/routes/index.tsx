@@ -893,7 +893,7 @@ function Footer() {
 function Landing() {
   return (
     <main className="relative">
-      <Nav />
+      <SiteNav />
       <Hero />
       <Trust />
       <Problem />
