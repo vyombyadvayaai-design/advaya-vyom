@@ -26,6 +26,7 @@ import {
   Compass,
   Sun,
   Mail,
+  Download,
 } from "lucide-react";
 import { z } from "zod";
 import heroImg from "@/assets/vyom-hero.png.asset.json";
