@@ -979,33 +979,43 @@ function Waitlist() {
 /* ---------------------------------------------------------------- */
 function Media() {
   const cards = [
-    { icon: FileText, t: "Pitch Deck", s: "View", href: "/pitch-deck" },
-    { icon: Newspaper, t: "Press Kit", s: "View", href: "/press-kit" },
-    { icon: Briefcase, t: "Careers", s: "Coming Soon", href: "#" },
-    { icon: BookOpen, t: "Blog", s: "Coming Soon", href: "#" },
+    { icon: FileText, t: "Pitch Deck", s: "Interactive · 20 slides", d: "The full investor narrative, slide by slide.", href: "/pitch-deck", ext: false },
+    { icon: Newspaper, t: "Press Kit", s: "View", d: "Company facts, founder bio, brand assets.", href: "/press-kit", ext: false },
+    { icon: Briefcase, t: "Company Profile", s: "PDF", d: "Overview of Advaya.ai and the VYOM platform.", href: companyPdf.url, ext: true },
+    { icon: BookOpen, t: "Founder Book", s: "PDF", d: "The story and philosophy behind the company.", href: founderPdf.url, ext: true },
   ];
   return (
-    <section className="section-pad relative">
+    <section id="resources" className="section-pad relative scroll-mt-24">
       <div className="mx-auto max-w-7xl px-6">
         <FadeIn>
           <SectionLabel>Media</SectionLabel>
           <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] leading-[1.02] tracking-[-0.02em] text-gradient">
             Resources.
           </h2>
+          <p className="mt-5 max-w-lg text-sm leading-relaxed text-muted-foreground">
+            Everything you need to understand the company, the product and the plan.
+          </p>
         </FadeIn>
         <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map((c, i) => (
             <FadeIn key={c.t} delay={i * 0.04}>
               <a
                 href={c.href}
-                className="group glass block rounded-2xl p-6 transition hover:-translate-y-1 hover:border-white/20"
+                {...(c.ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="group glass relative block h-full overflow-hidden rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:border-white/20"
               >
-                <div className="flex items-start justify-between">
+                <span
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{ background: "radial-gradient(120% 90% at 50% 0%, oklch(0.75 0.15 240 / 0.14), transparent 70%)" }}
+                  aria-hidden
+                />
+                <div className="relative flex items-start justify-between">
                   <c.icon className="h-5 w-5 text-accent" strokeWidth={1.5} />
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-foreground" />
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
                 </div>
-                <div className="mt-10 text-base font-medium text-foreground">{c.t}</div>
-                <div className="mt-1 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+                <div className="relative mt-10 text-base font-medium text-foreground">{c.t}</div>
+                <p className="relative mt-1.5 text-xs leading-relaxed text-muted-foreground">{c.d}</p>
+                <div className="relative mt-4 text-[10px] uppercase tracking-[0.25em] text-accent">
                   {c.s}
                 </div>
               </a>
@@ -1016,6 +1026,7 @@ function Media() {
     </section>
   );
 }
+
 
 /* ---------------------------------------------------------------- */
 /*  Social + Contact + Footer                                         */
