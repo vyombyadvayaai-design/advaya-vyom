@@ -696,19 +696,31 @@ function Roadmap() {
 /*  Founder                                                           */
 /* ---------------------------------------------------------------- */
 function Founder() {
+  const timeline = [
+    { y: "2023", t: "The question", d: "Why does AI still live behind a screen we have to look down at?" },
+    { y: "2024", t: "First sketches", d: "Optical studies, weight balancing, and early frame concepts." },
+    { y: "2025", t: "Advaya.ai founded", d: "A company formed in Lucknow to build AI hardware from India." },
+    { y: "2026", t: "VYOM in development", d: "Prototype engineering, model architecture, and early cohort testing." },
+  ];
   return (
-    <section id="founder" className="section-pad relative overflow-hidden">
+    <section id="founder" className="section-pad relative overflow-hidden scroll-mt-24">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="grid items-center gap-16 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+        <div className="grid items-start gap-16 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <FadeIn>
-            <div className="glass relative overflow-hidden rounded-[2rem]">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.97, filter: "blur(12px)" }}
+              whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 1.1, ease: [0.2, 0.8, 0.2, 1] }}
+              className="glass group relative overflow-hidden rounded-[2rem]"
+            >
               <img
                 src={founderImg}
-                alt="Ashutosh Yadav — Founder, Advaya.ai"
+                alt="Ashutosh Yadav — Founder of Advaya.ai and VYOM"
                 loading="lazy"
                 width={1024}
                 height={1280}
-                className="w-full grayscale-[15%]"
+                className="w-full grayscale-[15%] transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"
               />
               <div className="pointer-events-none absolute inset-0"
                 style={{ background: "linear-gradient(180deg, transparent 55%, oklch(0.06 0.005 260) 100%)" }}
@@ -719,8 +731,24 @@ function Founder() {
                   Founder, Advaya.ai
                 </div>
               </div>
-            </div>
+            </motion.div>
+
+            {/* Signature */}
+            <FadeIn delay={0.15}>
+              <div className="mt-6 flex items-end justify-between gap-4 px-1">
+                <div>
+                  <div className="font-display text-3xl italic text-foreground/90">
+                    Ashutosh Yadav
+                  </div>
+                  <div className="mt-1 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                    Founder & CEO · Lucknow, India
+                  </div>
+                </div>
+                <span className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent" />
+              </div>
+            </FadeIn>
           </FadeIn>
+
           <FadeIn delay={0.1}>
             <SectionLabel>Founder</SectionLabel>
             <blockquote className="font-display text-balance text-[clamp(1.75rem,3.6vw,3rem)] leading-[1.12] tracking-[-0.01em] text-gradient">
@@ -728,27 +756,62 @@ function Founder() {
               The future of computing won't stay in our hands — it will become part of how we see, think, and interact with the world.
               <span className="ml-1 text-accent">"</span>
             </blockquote>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {[
+                { icon: Compass, k: "Mission", v: "Make AI natural, accessible and genuinely useful in everyday life." },
+                { icon: Globe2, k: "Vision", v: "Globally recognised AI products, designed and built from India." },
+              ].map((m) => (
+                <div key={m.k} className="glass rounded-2xl p-5">
+                  <m.icon className="mb-4 h-4 w-4 text-accent" strokeWidth={1.5} />
+                  <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">{m.k}</div>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/85">{m.v}</p>
+                </div>
+              ))}
+            </div>
+
             <div className="mt-8 space-y-4 text-sm leading-relaxed text-muted-foreground">
               <p className="text-foreground">
                 <span className="font-medium">Ashutosh Yadav</span> — Founder, Advaya.ai & VYOM
               </p>
               <p>
-                Ashutosh Yadav is an Indian entrepreneur and technology enthusiast building the future of AI-powered wearable computing.
+                An Indian entrepreneur building the future of AI-powered wearable computing. He
+                founded Advaya.ai to make artificial intelligence feel natural in everyday life —
+                and is building VYOM, an AI smart glasses platform for learning, creating,
+                communicating and working hands-free.
               </p>
               <p>
-                He founded Advaya.ai with a vision of making artificial intelligence more natural, accessible, and useful in everyday life. Under Advaya.ai, he is building VYOM — an AI smart glasses platform designed to help people learn, create, communicate, and work more efficiently through intelligent, hands-free experiences.
+                His conviction is simple: technology should empower people rather than distract
+                them. That belief shapes every material, model and interaction choice in VYOM.
               </p>
-              <p>
-                Driven by the belief that technology should empower people rather than distract them, Ashutosh is focused on creating products that combine cutting-edge AI with thoughtful design and exceptional user experience.
-              </p>
-              <p>
-                His long-term mission is to build globally recognized AI products from India that improve productivity, learning, and problem-solving for millions of people around the world.
-              </p>
+            </div>
+
+            {/* Timeline */}
+            <div className="mt-10">
+              <div className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
+                The journey
+              </div>
+              <ul className="mt-5 space-y-4 border-l border-white/10 pl-6">
+                {timeline.map((t, i) => (
+                  <FadeIn key={t.y} delay={i * 0.06} y={12}>
+                    <li className="relative">
+                      <span
+                        className="absolute -left-[27px] top-2 h-2 w-2 rounded-full bg-accent shadow-[0_0_0_5px_oklch(0.75_0.15_240/0.12)]"
+                        aria-hidden
+                      />
+                      <div className="font-mono text-xs text-accent">{t.y}</div>
+                      <div className="mt-0.5 text-sm font-medium text-foreground">{t.t}</div>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{t.d}</p>
+                    </li>
+                  </FadeIn>
+                ))}
+              </ul>
             </div>
           </FadeIn>
         </div>
       </div>
     </section>
+
   );
 }
 
