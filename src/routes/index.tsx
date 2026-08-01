@@ -496,6 +496,44 @@ function Product() {
             ))}
           </div>
         </FadeIn>
+
+        {/* Feature cards */}
+        <FadeIn delay={0.05}>
+          <div className="mt-20 max-w-2xl">
+            <SectionLabel>Capabilities · Planned</SectionLabel>
+            <h3 className="font-display text-balance text-[clamp(1.75rem,4vw,3rem)] leading-[1.05] tracking-[-0.02em] text-gradient">
+              Eight ways VYOM
+              <span className="italic text-muted-foreground/80"> shows up for you.</span>
+            </h3>
+          </div>
+        </FadeIn>
+        <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { icon: Bot, t: "AI Assistant", d: "Ask anything, hands-free. Answers in your ear, not on a screen." },
+            { icon: Database, t: "Memory", d: "Recalls names, places and moments you'd otherwise forget." },
+            { icon: Mic, t: "Voice", d: "Natural speech in and out — no wake-word gymnastics." },
+            { icon: Camera, t: "Camera Intelligence", d: "Understands objects, text and scenes in front of you." },
+            { icon: GraduationCap, t: "Learning", d: "Explain, translate and summarise the world in real time." },
+            { icon: ListChecks, t: "Productivity", d: "Capture notes, tasks and meeting summaries as they happen." },
+            { icon: Navigation, t: "Navigation", d: "Turn-by-turn guidance that stays in your periphery." },
+            { icon: MessageSquare, t: "Communication", d: "Live captions and translation for clearer conversations." },
+          ].map((f, i) => (
+            <FadeIn key={f.t} delay={i * 0.04}>
+              <div className="group glass relative h-full overflow-hidden rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:border-white/20">
+                <div
+                  className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{ background: "radial-gradient(circle at 30% 0%, oklch(0.75 0.15 240 / 0.16), transparent 70%)" }}
+                />
+                <div className="relative">
+                  <f.icon className="mb-8 h-5 w-5 text-accent" strokeWidth={1.5} />
+                  <div className="text-base font-medium text-foreground">{f.t}</div>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.d}</p>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
       </div>
     </section>
   );
