@@ -593,16 +593,16 @@ function WhyVyom() {
 /* ---------------------------------------------------------------- */
 function Roadmap() {
   const steps = [
-    { p: "Now", t: "Research", d: "Human factors, model architecture, and optical R&D." },
-    { p: "Now", t: "Industrial Design", d: "Frame studies, weight balancing, material selection." },
-    { p: "Next", t: "Prototype", d: "First functional developer prototypes." },
-    { p: "Next", t: "Testing", d: "Closed-cohort ergonomics and reliability testing." },
-    { p: "Later", t: "Pilot", d: "Invite-only pilot with early creators and developers." },
-    { p: "Later", t: "Launch", d: "First public product, made in India." },
-    { p: "Vision", t: "Global Expansion", d: "Bringing VYOM to wearers around the world." },
+    { p: "Now", status: "In progress", pct: 70, t: "Research", d: "Human factors, model architecture, and optical R&D." },
+    { p: "Now", status: "In progress", pct: 55, t: "Industrial Design", d: "Frame studies, weight balancing, material selection." },
+    { p: "Next", status: "Up next", pct: 20, t: "Prototype", d: "First functional developer prototypes." },
+    { p: "Next", status: "Up next", pct: 10, t: "Testing", d: "Closed-cohort ergonomics and reliability testing." },
+    { p: "Later", status: "Planned", pct: 0, t: "Pilot", d: "Invite-only pilot with early creators and developers." },
+    { p: "Later", status: "Planned", pct: 0, t: "Launch", d: "First public product, made in India." },
+    { p: "Vision", status: "Long term", pct: 0, t: "Global Expansion", d: "Bringing VYOM to wearers around the world." },
   ];
   return (
-    <section id="roadmap" className="section-pad relative">
+    <section id="roadmap" className="section-pad relative scroll-mt-24">
       <div className="mx-auto max-w-6xl px-6">
         <FadeIn>
           <SectionLabel>Roadmap</SectionLabel>
@@ -611,6 +611,9 @@ function Roadmap() {
             <br />
             <span className="italic">walked step by step.</span>
           </h2>
+          <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            Honest status, updated as we go. Nothing has shipped yet — here's exactly where we are.
+          </p>
         </FadeIn>
 
         <div className="relative mt-16">
@@ -623,30 +626,67 @@ function Roadmap() {
                     i % 2 === 0 ? "" : "md:[&>*:first-child]:col-start-2"
                   }`}
                 >
-                  <div className="glass ml-12 rounded-2xl p-6 md:ml-0 md:mr-8 md:[&:where(:nth-child(1))]:mr-0">
-                    <div className="mb-2 flex items-center gap-3">
+                  <div className="glass ml-12 rounded-2xl p-6 transition-all duration-500 hover:border-white/20 md:ml-0 md:mr-8 md:[&:where(:nth-child(1))]:mr-0">
+                    <div className="mb-3 flex flex-wrap items-center gap-2">
                       <span className="rounded-full border border-white/15 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
                         {s.p}
                       </span>
-                      <span className="font-mono text-xs text-muted-foreground">
+                      <span
+                        className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] ${
+                          s.pct > 0
+                            ? "bg-accent/15 text-accent"
+                            : "bg-white/5 text-muted-foreground"
+                        }`}
+                      >
+                        {s.pct > 0 ? (
+                          <Zap className="h-3 w-3" strokeWidth={2} />
+                        ) : (
+                          <Clock className="h-3 w-3" strokeWidth={2} />
+                        )}
+                        {s.status}
+                      </span>
+                      <span className="ml-auto font-mono text-xs text-muted-foreground">
                         Phase 0{i + 1}
                       </span>
                     </div>
                     <div className="text-xl font-medium text-foreground">{s.t}</div>
-                    <p className="mt-2 text-sm text-muted-foreground">{s.d}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
+                    <div
+                      className="mt-5 h-1 w-full overflow-hidden rounded-full bg-white/8"
+                      role="progressbar"
+                      aria-valuenow={s.pct}
+                      aria-valuemin={0}
+                      aria-valuemax={100}
+                      aria-label={`${s.t} progress`}
+                    >
+                      <motion.span
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${s.pct}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.1, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] }}
+                        className="block h-full rounded-full bg-gradient-to-r from-accent/60 to-accent"
+                      />
+                    </div>
                   </div>
                   {/* Node */}
                   <span
                     className="absolute left-4 top-6 -translate-x-1/2 md:left-1/2"
                     aria-hidden
                   >
-                    <span className="block h-3 w-3 rounded-full bg-accent shadow-[0_0_0_6px_oklch(0.75_0.15_240/0.12)]" />
+                    <span
+                      className={`block h-3 w-3 rounded-full ${
+                        s.pct > 0
+                          ? "bg-accent shadow-[0_0_0_6px_oklch(0.75_0.15_240/0.12)]"
+                          : "bg-white/25"
+                      }`}
+                    />
                   </span>
                 </li>
               </FadeIn>
             ))}
           </ul>
         </div>
+
       </div>
     </section>
   );
