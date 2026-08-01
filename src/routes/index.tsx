@@ -544,33 +544,34 @@ function Product() {
 /* ---------------------------------------------------------------- */
 function WhyVyom() {
   const cards = [
-    { icon: Sparkles, t: "AI-first approach", d: "Every design decision starts with intelligence, not the screen." },
-    { icon: Compass, t: "Natural interaction", d: "Voice, gaze, and gesture — no menus to learn, no muscle memory to build." },
-    { icon: MapPin, t: "Designed in India", d: "Product design, engineering, and vision — all rooted at home." },
-    { icon: Globe2, t: "Wearable ecosystem", d: "An open platform being built for a future of ambient devices." },
-    { icon: Rocket, t: "Productivity focused", d: "Cut through noise. Return your attention to what matters." },
-    { icon: Leaf, t: "Accessibility focused", d: "Interfaces that adapt to the human, not the other way around." },
-    { icon: Cpu, t: "Industrial design", d: "Premium materials, honest form, considered weight." },
-    { icon: Shield, t: "Privacy by design", d: "On-device intelligence wherever possible. Consent, always." },
+    { icon: Sparkles, t: "AI-first wearable", d: "Built around intelligence from the first sketch — not a phone strapped to your face." },
+    { icon: Compass, t: "Natural interaction", d: "Voice, gaze and gesture. Nothing to learn, nothing to unlock." },
+    { icon: Shield, t: "Privacy-first architecture", d: "On-device wherever possible. Clear indicators, explicit consent, your data yours." },
+    { icon: Zap, t: "Hands-free computing", d: "Your hands stay free for the work, the wheel, the tools, the people." },
+    { icon: Database, t: "Long-term memory", d: "A private, searchable memory of what you saw, said and decided." },
+    { icon: Eye, t: "Context awareness", d: "Knows where you are and what's in front of you before you ask." },
+    { icon: Users, t: "Human-centered AI", d: "It helps, then gets out of the way. No feeds, no dark patterns." },
+    { icon: MapPin, t: "Designed in India", d: "Product design, engineering and manufacturing ambition rooted at home." },
   ];
   return (
-    <section className="section-pad relative">
+    <section id="why" className="section-pad relative scroll-mt-24">
       <div className="mx-auto max-w-7xl px-6">
         <FadeIn>
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
               <SectionLabel>Why VYOM</SectionLabel>
               <h2 className="font-display text-balance text-[clamp(2rem,5vw,4rem)] leading-[1.02] tracking-[-0.02em] text-gradient">
-                Eight principles.
+                Eight advantages.
                 <br />
                 <span className="italic text-muted-foreground/80">One quiet product.</span>
               </h2>
             </div>
-            <p className="max-w-sm text-sm text-muted-foreground">
-              A short list of the ideas we return to whenever we make a decision about VYOM.
+            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
+              What separates VYOM from a screen you wear — the principles behind every decision.
             </p>
           </div>
         </FadeIn>
+
         <div className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map((c, i) => (
             <FadeIn key={c.t} delay={i * 0.04}>
