@@ -27,7 +27,20 @@ import {
   FileText,
   Briefcase,
   BookOpen,
+  Bot,
+  Database,
+  Mic,
+  Camera,
+  GraduationCap,
+  ListChecks,
+  Navigation,
+  MessageSquare,
+  CheckCircle2,
+  Loader2,
+  Clock,
 } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
+import { joinWaitlist } from "@/lib/waitlist.functions";
 import { SiteNav } from "@/components/site-chrome";
 import heroImg from "@/assets/vyom-hero.png.asset.json";
 
@@ -42,6 +55,19 @@ const logoWordmark = logoWordmarkAsset.url;
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
+      { title: "VYOM by Advaya.ai — AI Smart Glasses Built in India" },
+      {
+        name: "description",
+        content:
+          "VYOM is an AI-first wearable platform in development by Advaya.ai — hands-free computing with memory, vision and voice, designed privacy-first in Lucknow, India.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "VYOM by Advaya.ai — AI Smart Glasses" },
+      {
+        property: "og:description",
+        content: "AI you wear. Hands-free, context-aware, privacy-first computing in development.",
+      },
       { property: "og:image", content: (heroImg as { url: string }).url },
       { name: "twitter:image", content: (heroImg as { url: string }).url },
     ],
@@ -49,6 +75,7 @@ export const Route = createFileRoute("/")({
   }),
   component: Landing,
 });
+
 
 /* ---------------------------------------------------------------- */
 /*  Ambient background: stars + aurora + soft particles              */
