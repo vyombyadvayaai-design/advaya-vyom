@@ -177,35 +177,49 @@ function Hero() {
             transition={{ duration: 1.1, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
             className="font-display text-balance text-[clamp(2.75rem,7.5vw,6.5rem)] leading-[0.95] tracking-[-0.02em] text-gradient"
           >
-            The Future of AI
+            Stop looking down.
             <br />
-            <span className="italic text-aurora">You'll Wear.</span>
+            <span className="italic text-aurora">Start seeing more.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.35 }}
-            className="mx-auto mt-8 max-w-2xl text-balance text-base leading-relaxed text-muted-foreground md:text-lg"
+            className="mx-auto mt-8 max-w-xl text-balance text-base leading-relaxed text-muted-foreground md:text-lg"
           >
-            VYOM is an AI-first wearable platform being developed to make artificial
-            intelligence feel natural, intuitive, and always available. Built in India
-            with global ambitions.
+            VYOM is an AI-first wearable — smart glasses that see what you see, remember
+            what matters, and answer without a screen. Built in India, for the world.
           </motion.p>
+
+          <motion.ul
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.45 }}
+            className="mx-auto mt-7 flex max-w-2xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.22em] text-muted-foreground"
+          >
+            {["Hands-free", "Context aware", "Privacy first"].map((t) => (
+              <li key={t} className="inline-flex items-center gap-2">
+                <span className="h-1 w-1 rounded-full bg-accent" />
+                {t}
+              </li>
+            ))}
+          </motion.ul>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            transition={{ duration: 1, delay: 0.55 }}
             className="mt-10 flex flex-wrap items-center justify-center gap-3"
           >
             <a href="#waitlist" className="btn-primary">
               Join Waitlist <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="#vision" className="btn-ghost">
-              Explore Our Vision
+            <a href="#why" className="btn-ghost">
+              Why VYOM
             </a>
           </motion.div>
+
         </div>
 
         {/* 3D floating glasses */}
