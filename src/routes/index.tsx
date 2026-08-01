@@ -27,7 +27,20 @@ import {
   FileText,
   Briefcase,
   BookOpen,
+  Bot,
+  Database,
+  Mic,
+  Camera,
+  GraduationCap,
+  ListChecks,
+  Navigation,
+  MessageSquare,
+  CheckCircle2,
+  Loader2,
+  Clock,
 } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
+import { joinWaitlist } from "@/lib/waitlist.functions";
 import { SiteNav } from "@/components/site-chrome";
 import heroImg from "@/assets/vyom-hero.png.asset.json";
 
@@ -35,6 +48,8 @@ import angleImg from "@/assets/vyom-angle.png.asset.json";
 import gridImg from "@/assets/vyom-grid.png.asset.json";
 import founderAsset from "@/assets/founder.png.asset.json";
 import logoWordmarkAsset from "@/assets/vyom-logo-wordmark.png.asset.json";
+import companyPdf from "@/assets/company_profile.pdf.asset.json";
+import founderPdf from "@/assets/founder_book.pdf.asset.json";
 const founderImg = founderAsset.url;
 const logoWordmark = logoWordmarkAsset.url;
 
@@ -42,6 +57,19 @@ const logoWordmark = logoWordmarkAsset.url;
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
+      { title: "VYOM by Advaya.ai — AI Smart Glasses Built in India" },
+      {
+        name: "description",
+        content:
+          "VYOM is an AI-first wearable platform in development by Advaya.ai — hands-free computing with memory, vision and voice, designed privacy-first in Lucknow, India.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "VYOM by Advaya.ai — AI Smart Glasses" },
+      {
+        property: "og:description",
+        content: "AI you wear. Hands-free, context-aware, privacy-first computing in development.",
+      },
       { property: "og:image", content: (heroImg as { url: string }).url },
       { name: "twitter:image", content: (heroImg as { url: string }).url },
     ],
@@ -49,6 +77,7 @@ export const Route = createFileRoute("/")({
   }),
   component: Landing,
 });
+
 
 /* ---------------------------------------------------------------- */
 /*  Ambient background: stars + aurora + soft particles              */
@@ -150,35 +179,49 @@ function Hero() {
             transition={{ duration: 1.1, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
             className="font-display text-balance text-[clamp(2.75rem,7.5vw,6.5rem)] leading-[0.95] tracking-[-0.02em] text-gradient"
           >
-            The Future of AI
+            Stop looking down.
             <br />
-            <span className="italic text-aurora">You'll Wear.</span>
+            <span className="italic text-aurora">Start seeing more.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.35 }}
-            className="mx-auto mt-8 max-w-2xl text-balance text-base leading-relaxed text-muted-foreground md:text-lg"
+            className="mx-auto mt-8 max-w-xl text-balance text-base leading-relaxed text-muted-foreground md:text-lg"
           >
-            VYOM is an AI-first wearable platform being developed to make artificial
-            intelligence feel natural, intuitive, and always available. Built in India
-            with global ambitions.
+            VYOM is an AI-first wearable — smart glasses that see what you see, remember
+            what matters, and answer without a screen. Built in India, for the world.
           </motion.p>
+
+          <motion.ul
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.45 }}
+            className="mx-auto mt-7 flex max-w-2xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.22em] text-muted-foreground"
+          >
+            {["Hands-free", "Context aware", "Privacy first"].map((t) => (
+              <li key={t} className="inline-flex items-center gap-2">
+                <span className="h-1 w-1 rounded-full bg-accent" />
+                {t}
+              </li>
+            ))}
+          </motion.ul>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            transition={{ duration: 1, delay: 0.55 }}
             className="mt-10 flex flex-wrap items-center justify-center gap-3"
           >
             <a href="#waitlist" className="btn-primary">
               Join Waitlist <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="#vision" className="btn-ghost">
-              Explore Our Vision
+            <a href="#why" className="btn-ghost">
+              Why VYOM
             </a>
           </motion.div>
+
         </div>
 
         {/* 3D floating glasses */}
@@ -455,6 +498,44 @@ function Product() {
             ))}
           </div>
         </FadeIn>
+
+        {/* Feature cards */}
+        <FadeIn delay={0.05}>
+          <div className="mt-20 max-w-2xl">
+            <SectionLabel>Capabilities · Planned</SectionLabel>
+            <h3 className="font-display text-balance text-[clamp(1.75rem,4vw,3rem)] leading-[1.05] tracking-[-0.02em] text-gradient">
+              Eight ways VYOM
+              <span className="italic text-muted-foreground/80"> shows up for you.</span>
+            </h3>
+          </div>
+        </FadeIn>
+        <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { icon: Bot, t: "AI Assistant", d: "Ask anything, hands-free. Answers in your ear, not on a screen." },
+            { icon: Database, t: "Memory", d: "Recalls names, places and moments you'd otherwise forget." },
+            { icon: Mic, t: "Voice", d: "Natural speech in and out — no wake-word gymnastics." },
+            { icon: Camera, t: "Camera Intelligence", d: "Understands objects, text and scenes in front of you." },
+            { icon: GraduationCap, t: "Learning", d: "Explain, translate and summarise the world in real time." },
+            { icon: ListChecks, t: "Productivity", d: "Capture notes, tasks and meeting summaries as they happen." },
+            { icon: Navigation, t: "Navigation", d: "Turn-by-turn guidance that stays in your periphery." },
+            { icon: MessageSquare, t: "Communication", d: "Live captions and translation for clearer conversations." },
+          ].map((f, i) => (
+            <FadeIn key={f.t} delay={i * 0.04}>
+              <div className="group glass relative h-full overflow-hidden rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:border-white/20">
+                <div
+                  className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{ background: "radial-gradient(circle at 30% 0%, oklch(0.75 0.15 240 / 0.16), transparent 70%)" }}
+                />
+                <div className="relative">
+                  <f.icon className="mb-8 h-5 w-5 text-accent" strokeWidth={1.5} />
+                  <div className="text-base font-medium text-foreground">{f.t}</div>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.d}</p>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
       </div>
     </section>
   );
@@ -465,33 +546,34 @@ function Product() {
 /* ---------------------------------------------------------------- */
 function WhyVyom() {
   const cards = [
-    { icon: Sparkles, t: "AI-first approach", d: "Every design decision starts with intelligence, not the screen." },
-    { icon: Compass, t: "Natural interaction", d: "Voice, gaze, and gesture — no menus to learn, no muscle memory to build." },
-    { icon: MapPin, t: "Designed in India", d: "Product design, engineering, and vision — all rooted at home." },
-    { icon: Globe2, t: "Wearable ecosystem", d: "An open platform being built for a future of ambient devices." },
-    { icon: Rocket, t: "Productivity focused", d: "Cut through noise. Return your attention to what matters." },
-    { icon: Leaf, t: "Accessibility focused", d: "Interfaces that adapt to the human, not the other way around." },
-    { icon: Cpu, t: "Industrial design", d: "Premium materials, honest form, considered weight." },
-    { icon: Shield, t: "Privacy by design", d: "On-device intelligence wherever possible. Consent, always." },
+    { icon: Sparkles, t: "AI-first wearable", d: "Built around intelligence from the first sketch — not a phone strapped to your face." },
+    { icon: Compass, t: "Natural interaction", d: "Voice, gaze and gesture. Nothing to learn, nothing to unlock." },
+    { icon: Shield, t: "Privacy-first architecture", d: "On-device wherever possible. Clear indicators, explicit consent, your data yours." },
+    { icon: Zap, t: "Hands-free computing", d: "Your hands stay free for the work, the wheel, the tools, the people." },
+    { icon: Database, t: "Long-term memory", d: "A private, searchable memory of what you saw, said and decided." },
+    { icon: Eye, t: "Context awareness", d: "Knows where you are and what's in front of you before you ask." },
+    { icon: Users, t: "Human-centered AI", d: "It helps, then gets out of the way. No feeds, no dark patterns." },
+    { icon: MapPin, t: "Designed in India", d: "Product design, engineering and manufacturing ambition rooted at home." },
   ];
   return (
-    <section className="section-pad relative">
+    <section id="why" className="section-pad relative scroll-mt-24">
       <div className="mx-auto max-w-7xl px-6">
         <FadeIn>
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
               <SectionLabel>Why VYOM</SectionLabel>
               <h2 className="font-display text-balance text-[clamp(2rem,5vw,4rem)] leading-[1.02] tracking-[-0.02em] text-gradient">
-                Eight principles.
+                Eight advantages.
                 <br />
                 <span className="italic text-muted-foreground/80">One quiet product.</span>
               </h2>
             </div>
-            <p className="max-w-sm text-sm text-muted-foreground">
-              A short list of the ideas we return to whenever we make a decision about VYOM.
+            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
+              What separates VYOM from a screen you wear — the principles behind every decision.
             </p>
           </div>
         </FadeIn>
+
         <div className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map((c, i) => (
             <FadeIn key={c.t} delay={i * 0.04}>
@@ -513,16 +595,16 @@ function WhyVyom() {
 /* ---------------------------------------------------------------- */
 function Roadmap() {
   const steps = [
-    { p: "Now", t: "Research", d: "Human factors, model architecture, and optical R&D." },
-    { p: "Now", t: "Industrial Design", d: "Frame studies, weight balancing, material selection." },
-    { p: "Next", t: "Prototype", d: "First functional developer prototypes." },
-    { p: "Next", t: "Testing", d: "Closed-cohort ergonomics and reliability testing." },
-    { p: "Later", t: "Pilot", d: "Invite-only pilot with early creators and developers." },
-    { p: "Later", t: "Launch", d: "First public product, made in India." },
-    { p: "Vision", t: "Global Expansion", d: "Bringing VYOM to wearers around the world." },
+    { p: "Now", status: "In progress", pct: 70, t: "Research", d: "Human factors, model architecture, and optical R&D." },
+    { p: "Now", status: "In progress", pct: 55, t: "Industrial Design", d: "Frame studies, weight balancing, material selection." },
+    { p: "Next", status: "Up next", pct: 20, t: "Prototype", d: "First functional developer prototypes." },
+    { p: "Next", status: "Up next", pct: 10, t: "Testing", d: "Closed-cohort ergonomics and reliability testing." },
+    { p: "Later", status: "Planned", pct: 0, t: "Pilot", d: "Invite-only pilot with early creators and developers." },
+    { p: "Later", status: "Planned", pct: 0, t: "Launch", d: "First public product, made in India." },
+    { p: "Vision", status: "Long term", pct: 0, t: "Global Expansion", d: "Bringing VYOM to wearers around the world." },
   ];
   return (
-    <section id="roadmap" className="section-pad relative">
+    <section id="roadmap" className="section-pad relative scroll-mt-24">
       <div className="mx-auto max-w-6xl px-6">
         <FadeIn>
           <SectionLabel>Roadmap</SectionLabel>
@@ -531,6 +613,9 @@ function Roadmap() {
             <br />
             <span className="italic">walked step by step.</span>
           </h2>
+          <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            Honest status, updated as we go. Nothing has shipped yet — here's exactly where we are.
+          </p>
         </FadeIn>
 
         <div className="relative mt-16">
@@ -543,30 +628,67 @@ function Roadmap() {
                     i % 2 === 0 ? "" : "md:[&>*:first-child]:col-start-2"
                   }`}
                 >
-                  <div className="glass ml-12 rounded-2xl p-6 md:ml-0 md:mr-8 md:[&:where(:nth-child(1))]:mr-0">
-                    <div className="mb-2 flex items-center gap-3">
+                  <div className="glass ml-12 rounded-2xl p-6 transition-all duration-500 hover:border-white/20 md:ml-0 md:mr-8 md:[&:where(:nth-child(1))]:mr-0">
+                    <div className="mb-3 flex flex-wrap items-center gap-2">
                       <span className="rounded-full border border-white/15 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
                         {s.p}
                       </span>
-                      <span className="font-mono text-xs text-muted-foreground">
+                      <span
+                        className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] ${
+                          s.pct > 0
+                            ? "bg-accent/15 text-accent"
+                            : "bg-white/5 text-muted-foreground"
+                        }`}
+                      >
+                        {s.pct > 0 ? (
+                          <Zap className="h-3 w-3" strokeWidth={2} />
+                        ) : (
+                          <Clock className="h-3 w-3" strokeWidth={2} />
+                        )}
+                        {s.status}
+                      </span>
+                      <span className="ml-auto font-mono text-xs text-muted-foreground">
                         Phase 0{i + 1}
                       </span>
                     </div>
                     <div className="text-xl font-medium text-foreground">{s.t}</div>
-                    <p className="mt-2 text-sm text-muted-foreground">{s.d}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
+                    <div
+                      className="mt-5 h-1 w-full overflow-hidden rounded-full bg-white/8"
+                      role="progressbar"
+                      aria-valuenow={s.pct}
+                      aria-valuemin={0}
+                      aria-valuemax={100}
+                      aria-label={`${s.t} progress`}
+                    >
+                      <motion.span
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${s.pct}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.1, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] }}
+                        className="block h-full rounded-full bg-gradient-to-r from-accent/60 to-accent"
+                      />
+                    </div>
                   </div>
                   {/* Node */}
                   <span
                     className="absolute left-4 top-6 -translate-x-1/2 md:left-1/2"
                     aria-hidden
                   >
-                    <span className="block h-3 w-3 rounded-full bg-accent shadow-[0_0_0_6px_oklch(0.75_0.15_240/0.12)]" />
+                    <span
+                      className={`block h-3 w-3 rounded-full ${
+                        s.pct > 0
+                          ? "bg-accent shadow-[0_0_0_6px_oklch(0.75_0.15_240/0.12)]"
+                          : "bg-white/25"
+                      }`}
+                    />
                   </span>
                 </li>
               </FadeIn>
             ))}
           </ul>
         </div>
+
       </div>
     </section>
   );
@@ -576,19 +698,31 @@ function Roadmap() {
 /*  Founder                                                           */
 /* ---------------------------------------------------------------- */
 function Founder() {
+  const timeline = [
+    { y: "2023", t: "The question", d: "Why does AI still live behind a screen we have to look down at?" },
+    { y: "2024", t: "First sketches", d: "Optical studies, weight balancing, and early frame concepts." },
+    { y: "2025", t: "Advaya.ai founded", d: "A company formed in Lucknow to build AI hardware from India." },
+    { y: "2026", t: "VYOM in development", d: "Prototype engineering, model architecture, and early cohort testing." },
+  ];
   return (
-    <section id="founder" className="section-pad relative overflow-hidden">
+    <section id="founder" className="section-pad relative overflow-hidden scroll-mt-24">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="grid items-center gap-16 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+        <div className="grid items-start gap-16 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <FadeIn>
-            <div className="glass relative overflow-hidden rounded-[2rem]">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.97, filter: "blur(12px)" }}
+              whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 1.1, ease: [0.2, 0.8, 0.2, 1] }}
+              className="glass group relative overflow-hidden rounded-[2rem]"
+            >
               <img
                 src={founderImg}
-                alt="Ashutosh Yadav — Founder, Advaya.ai"
+                alt="Ashutosh Yadav — Founder of Advaya.ai and VYOM"
                 loading="lazy"
                 width={1024}
                 height={1280}
-                className="w-full grayscale-[15%]"
+                className="w-full grayscale-[15%] transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"
               />
               <div className="pointer-events-none absolute inset-0"
                 style={{ background: "linear-gradient(180deg, transparent 55%, oklch(0.06 0.005 260) 100%)" }}
@@ -599,8 +733,24 @@ function Founder() {
                   Founder, Advaya.ai
                 </div>
               </div>
-            </div>
+            </motion.div>
+
+            {/* Signature */}
+            <FadeIn delay={0.15}>
+              <div className="mt-6 flex items-end justify-between gap-4 px-1">
+                <div>
+                  <div className="font-display text-3xl italic text-foreground/90">
+                    Ashutosh Yadav
+                  </div>
+                  <div className="mt-1 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                    Founder & CEO · Lucknow, India
+                  </div>
+                </div>
+                <span className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent" />
+              </div>
+            </FadeIn>
           </FadeIn>
+
           <FadeIn delay={0.1}>
             <SectionLabel>Founder</SectionLabel>
             <blockquote className="font-display text-balance text-[clamp(1.75rem,3.6vw,3rem)] leading-[1.12] tracking-[-0.01em] text-gradient">
@@ -608,27 +758,62 @@ function Founder() {
               The future of computing won't stay in our hands — it will become part of how we see, think, and interact with the world.
               <span className="ml-1 text-accent">"</span>
             </blockquote>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {[
+                { icon: Compass, k: "Mission", v: "Make AI natural, accessible and genuinely useful in everyday life." },
+                { icon: Globe2, k: "Vision", v: "Globally recognised AI products, designed and built from India." },
+              ].map((m) => (
+                <div key={m.k} className="glass rounded-2xl p-5">
+                  <m.icon className="mb-4 h-4 w-4 text-accent" strokeWidth={1.5} />
+                  <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">{m.k}</div>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/85">{m.v}</p>
+                </div>
+              ))}
+            </div>
+
             <div className="mt-8 space-y-4 text-sm leading-relaxed text-muted-foreground">
               <p className="text-foreground">
                 <span className="font-medium">Ashutosh Yadav</span> — Founder, Advaya.ai & VYOM
               </p>
               <p>
-                Ashutosh Yadav is an Indian entrepreneur and technology enthusiast building the future of AI-powered wearable computing.
+                An Indian entrepreneur building the future of AI-powered wearable computing. He
+                founded Advaya.ai to make artificial intelligence feel natural in everyday life —
+                and is building VYOM, an AI smart glasses platform for learning, creating,
+                communicating and working hands-free.
               </p>
               <p>
-                He founded Advaya.ai with a vision of making artificial intelligence more natural, accessible, and useful in everyday life. Under Advaya.ai, he is building VYOM — an AI smart glasses platform designed to help people learn, create, communicate, and work more efficiently through intelligent, hands-free experiences.
+                His conviction is simple: technology should empower people rather than distract
+                them. That belief shapes every material, model and interaction choice in VYOM.
               </p>
-              <p>
-                Driven by the belief that technology should empower people rather than distract them, Ashutosh is focused on creating products that combine cutting-edge AI with thoughtful design and exceptional user experience.
-              </p>
-              <p>
-                His long-term mission is to build globally recognized AI products from India that improve productivity, learning, and problem-solving for millions of people around the world.
-              </p>
+            </div>
+
+            {/* Timeline */}
+            <div className="mt-10">
+              <div className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
+                The journey
+              </div>
+              <ul className="mt-5 space-y-4 border-l border-white/10 pl-6">
+                {timeline.map((t, i) => (
+                  <FadeIn key={t.y} delay={i * 0.06} y={12}>
+                    <li className="relative">
+                      <span
+                        className="absolute -left-[27px] top-2 h-2 w-2 rounded-full bg-accent shadow-[0_0_0_5px_oklch(0.75_0.15_240/0.12)]"
+                        aria-hidden
+                      />
+                      <div className="font-mono text-xs text-accent">{t.y}</div>
+                      <div className="mt-0.5 text-sm font-medium text-foreground">{t.t}</div>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{t.d}</p>
+                    </li>
+                  </FadeIn>
+                ))}
+              </ul>
             </div>
           </FadeIn>
         </div>
       </div>
     </section>
+
   );
 }
 
@@ -682,19 +867,40 @@ function WhyIndia() {
 /*  Waitlist                                                          */
 /* ---------------------------------------------------------------- */
 function Waitlist() {
+  const join = useServerFn(joinWaitlist);
   const [email, setEmail] = useState("");
-  const [state, setState] = useState<"idle" | "ok">("idle");
-  const submit = (e: React.FormEvent) => {
+  const [state, setState] = useState<"idle" | "loading" | "ok" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    setState("ok");
-    setEmail("");
-    setTimeout(() => setState("idle"), 4000);
+    setState("loading");
+    try {
+      const res = await join({ data: { email, source: "homepage" } });
+      setMessage(
+        res.alreadyJoined
+          ? "You're already on the list — we'll be in touch."
+          : "You're in. Welcome to the journey."
+      );
+      setState("ok");
+      setEmail("");
+    } catch (err) {
+      setState("error");
+      setMessage(err instanceof Error ? err.message : "Something went wrong.");
+    }
   };
+
+  const benefits = [
+    { icon: Sparkles, t: "Exclusive early access", d: "First invitations when the pilot cohort opens." },
+    { icon: Eye, t: "Prototype reveals", d: "See hardware and software before anyone else." },
+    { icon: Users, t: "Community updates", d: "Founder notes on progress, setbacks and decisions." },
+  ];
+
   return (
-    <section id="waitlist" className="section-pad relative overflow-hidden">
+    <section id="waitlist" className="section-pad relative overflow-hidden scroll-mt-24">
       <div className="mx-auto max-w-4xl px-6">
-        <div className="glass-strong relative overflow-hidden rounded-[2rem] px-8 py-16 text-center md:px-16 md:py-24">
+        <div className="glass-strong relative overflow-hidden rounded-[2rem] px-8 py-16 text-center md:px-16 md:py-20">
           <div className="pointer-events-none absolute inset-0 aurora-bg opacity-70" />
           <div className="relative">
             <FadeIn>
@@ -702,36 +908,71 @@ function Waitlist() {
               <h2 className="font-display text-balance text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.02] tracking-[-0.02em] text-gradient">
                 Join the <span className="italic">Future.</span>
               </h2>
-              <p className="mx-auto mt-5 max-w-md text-sm text-muted-foreground">
-                Be among the first to follow VYOM's journey.
+              <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
+                A few hundred people will shape VYOM before the world sees it. Be one of them.
               </p>
             </FadeIn>
+
             <FadeIn delay={0.1}>
-              <form
-                onSubmit={submit}
-                className="glass mx-auto mt-10 flex max-w-xl flex-col gap-2 rounded-full p-2 sm:flex-row"
-              >
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@company.com"
-                  className="flex-1 rounded-full bg-transparent px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
-                />
-                <button type="submit" className="btn-primary shrink-0">
-                  {state === "ok" ? "You're in ✓" : "Request access"}
-                  {state !== "ok" && <ArrowRight className="h-4 w-4" />}
-                </button>
-              </form>
-              <p className="mt-4 text-xs text-muted-foreground">
-                No spam. Occasional updates on our progress.
+              {state === "ok" ? (
+                <div className="mx-auto mt-10 flex max-w-xl flex-col items-center gap-3">
+                  <div className="grid h-12 w-12 place-items-center rounded-full bg-accent/15">
+                    <CheckCircle2 className="h-6 w-6 text-accent" strokeWidth={1.5} />
+                  </div>
+                  <p className="text-sm text-foreground">{message}</p>
+                </div>
+              ) : (
+                <form
+                  onSubmit={submit}
+                  className="glass mx-auto mt-10 flex max-w-xl flex-col gap-2 rounded-3xl p-2 sm:flex-row sm:rounded-full"
+                >
+                  <label htmlFor="waitlist-email" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    id="waitlist-email"
+                    type="email"
+                    required
+                    maxLength={320}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@company.com"
+                    className="flex-1 rounded-full bg-transparent px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                  />
+                  <button type="submit" disabled={state === "loading"} className="btn-primary shrink-0 disabled:opacity-70">
+                    {state === "loading" ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" /> Joining…
+                      </>
+                    ) : (
+                      <>
+                        Request access <ArrowRight className="h-4 w-4" />
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
+              <p className={`mt-4 text-xs ${state === "error" ? "text-destructive" : "text-muted-foreground"}`}>
+                {state === "error" ? message : "No spam. Occasional updates on our progress."}
               </p>
             </FadeIn>
+
+            <div className="mt-12 grid gap-3 text-left sm:grid-cols-3">
+              {benefits.map((b, i) => (
+                <FadeIn key={b.t} delay={0.15 + i * 0.05} y={14}>
+                  <div className="glass h-full rounded-2xl p-5">
+                    <b.icon className="mb-4 h-4 w-4 text-accent" strokeWidth={1.5} />
+                    <div className="text-sm font-medium text-foreground">{b.t}</div>
+                    <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{b.d}</p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </section>
+
   );
 }
 
@@ -740,33 +981,43 @@ function Waitlist() {
 /* ---------------------------------------------------------------- */
 function Media() {
   const cards = [
-    { icon: FileText, t: "Pitch Deck", s: "View", href: "/pitch-deck" },
-    { icon: Newspaper, t: "Press Kit", s: "View", href: "/press-kit" },
-    { icon: Briefcase, t: "Careers", s: "Coming Soon", href: "#" },
-    { icon: BookOpen, t: "Blog", s: "Coming Soon", href: "#" },
+    { icon: FileText, t: "Pitch Deck", s: "Interactive · 20 slides", d: "The full investor narrative, slide by slide.", href: "/pitch-deck", ext: false },
+    { icon: Newspaper, t: "Press Kit", s: "View", d: "Company facts, founder bio, brand assets.", href: "/press-kit", ext: false },
+    { icon: Briefcase, t: "Company Profile", s: "PDF", d: "Overview of Advaya.ai and the VYOM platform.", href: companyPdf.url, ext: true },
+    { icon: BookOpen, t: "Founder Book", s: "PDF", d: "The story and philosophy behind the company.", href: founderPdf.url, ext: true },
   ];
   return (
-    <section className="section-pad relative">
+    <section id="resources" className="section-pad relative scroll-mt-24">
       <div className="mx-auto max-w-7xl px-6">
         <FadeIn>
           <SectionLabel>Media</SectionLabel>
           <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] leading-[1.02] tracking-[-0.02em] text-gradient">
             Resources.
           </h2>
+          <p className="mt-5 max-w-lg text-sm leading-relaxed text-muted-foreground">
+            Everything you need to understand the company, the product and the plan.
+          </p>
         </FadeIn>
         <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map((c, i) => (
             <FadeIn key={c.t} delay={i * 0.04}>
               <a
                 href={c.href}
-                className="group glass block rounded-2xl p-6 transition hover:-translate-y-1 hover:border-white/20"
+                {...(c.ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="group glass relative block h-full overflow-hidden rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:border-white/20"
               >
-                <div className="flex items-start justify-between">
+                <span
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{ background: "radial-gradient(120% 90% at 50% 0%, oklch(0.75 0.15 240 / 0.14), transparent 70%)" }}
+                  aria-hidden
+                />
+                <div className="relative flex items-start justify-between">
                   <c.icon className="h-5 w-5 text-accent" strokeWidth={1.5} />
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-foreground" />
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
                 </div>
-                <div className="mt-10 text-base font-medium text-foreground">{c.t}</div>
-                <div className="mt-1 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+                <div className="relative mt-10 text-base font-medium text-foreground">{c.t}</div>
+                <p className="relative mt-1.5 text-xs leading-relaxed text-muted-foreground">{c.d}</p>
+                <div className="relative mt-4 text-[10px] uppercase tracking-[0.25em] text-accent">
                   {c.s}
                 </div>
               </a>
@@ -777,6 +1028,7 @@ function Media() {
     </section>
   );
 }
+
 
 /* ---------------------------------------------------------------- */
 /*  Social + Contact + Footer                                         */
