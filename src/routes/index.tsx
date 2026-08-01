@@ -865,19 +865,40 @@ function WhyIndia() {
 /*  Waitlist                                                          */
 /* ---------------------------------------------------------------- */
 function Waitlist() {
+  const join = useServerFn(joinWaitlist);
   const [email, setEmail] = useState("");
-  const [state, setState] = useState<"idle" | "ok">("idle");
-  const submit = (e: React.FormEvent) => {
+  const [state, setState] = useState<"idle" | "loading" | "ok" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    setState("ok");
-    setEmail("");
-    setTimeout(() => setState("idle"), 4000);
+    setState("loading");
+    try {
+      const res = await join({ data: { email, source: "homepage" } });
+      setMessage(
+        res.alreadyJoined
+          ? "You're already on the list — we'll be in touch."
+          : "You're in. Welcome to the journey."
+      );
+      setState("ok");
+      setEmail("");
+    } catch (err) {
+      setState("error");
+      setMessage(err instanceof Error ? err.message : "Something went wrong.");
+    }
   };
+
+  const benefits = [
+    { icon: Sparkles, t: "Exclusive early access", d: "First invitations when the pilot cohort opens." },
+    { icon: Eye, t: "Prototype reveals", d: "See hardware and software before anyone else." },
+    { icon: Users, t: "Community updates", d: "Founder notes on progress, setbacks and decisions." },
+  ];
+
   return (
-    <section id="waitlist" className="section-pad relative overflow-hidden">
+    <section id="waitlist" className="section-pad relative overflow-hidden scroll-mt-24">
       <div className="mx-auto max-w-4xl px-6">
-        <div className="glass-strong relative overflow-hidden rounded-[2rem] px-8 py-16 text-center md:px-16 md:py-24">
+        <div className="glass-strong relative overflow-hidden rounded-[2rem] px-8 py-16 text-center md:px-16 md:py-20">
           <div className="pointer-events-none absolute inset-0 aurora-bg opacity-70" />
           <div className="relative">
             <FadeIn>
@@ -885,36 +906,71 @@ function Waitlist() {
               <h2 className="font-display text-balance text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.02] tracking-[-0.02em] text-gradient">
                 Join the <span className="italic">Future.</span>
               </h2>
-              <p className="mx-auto mt-5 max-w-md text-sm text-muted-foreground">
-                Be among the first to follow VYOM's journey.
+              <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
+                A few hundred people will shape VYOM before the world sees it. Be one of them.
               </p>
             </FadeIn>
+
             <FadeIn delay={0.1}>
-              <form
-                onSubmit={submit}
-                className="glass mx-auto mt-10 flex max-w-xl flex-col gap-2 rounded-full p-2 sm:flex-row"
-              >
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@company.com"
-                  className="flex-1 rounded-full bg-transparent px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
-                />
-                <button type="submit" className="btn-primary shrink-0">
-                  {state === "ok" ? "You're in ✓" : "Request access"}
-                  {state !== "ok" && <ArrowRight className="h-4 w-4" />}
-                </button>
-              </form>
-              <p className="mt-4 text-xs text-muted-foreground">
-                No spam. Occasional updates on our progress.
+              {state === "ok" ? (
+                <div className="mx-auto mt-10 flex max-w-xl flex-col items-center gap-3">
+                  <div className="grid h-12 w-12 place-items-center rounded-full bg-accent/15">
+                    <CheckCircle2 className="h-6 w-6 text-accent" strokeWidth={1.5} />
+                  </div>
+                  <p className="text-sm text-foreground">{message}</p>
+                </div>
+              ) : (
+                <form
+                  onSubmit={submit}
+                  className="glass mx-auto mt-10 flex max-w-xl flex-col gap-2 rounded-3xl p-2 sm:flex-row sm:rounded-full"
+                >
+                  <label htmlFor="waitlist-email" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    id="waitlist-email"
+                    type="email"
+                    required
+                    maxLength={320}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@company.com"
+                    className="flex-1 rounded-full bg-transparent px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                  />
+                  <button type="submit" disabled={state === "loading"} className="btn-primary shrink-0 disabled:opacity-70">
+                    {state === "loading" ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" /> Joining…
+                      </>
+                    ) : (
+                      <>
+                        Request access <ArrowRight className="h-4 w-4" />
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
+              <p className={`mt-4 text-xs ${state === "error" ? "text-destructive" : "text-muted-foreground"}`}>
+                {state === "error" ? message : "No spam. Occasional updates on our progress."}
               </p>
             </FadeIn>
+
+            <div className="mt-12 grid gap-3 text-left sm:grid-cols-3">
+              {benefits.map((b, i) => (
+                <FadeIn key={b.t} delay={0.15 + i * 0.05} y={14}>
+                  <div className="glass h-full rounded-2xl p-5">
+                    <b.icon className="mb-4 h-4 w-4 text-accent" strokeWidth={1.5} />
+                    <div className="text-sm font-medium text-foreground">{b.t}</div>
+                    <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{b.d}</p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </section>
+
   );
 }
 
