@@ -48,6 +48,8 @@ import angleImg from "@/assets/vyom-angle.png.asset.json";
 import gridImg from "@/assets/vyom-grid.png.asset.json";
 import founderAsset from "@/assets/founder.png.asset.json";
 import logoWordmarkAsset from "@/assets/vyom-logo-wordmark.png.asset.json";
+import companyPdf from "@/assets/company_profile.pdf.asset.json";
+import founderPdf from "@/assets/founder_book.pdf.asset.json";
 const founderImg = founderAsset.url;
 const logoWordmark = logoWordmarkAsset.url;
 
