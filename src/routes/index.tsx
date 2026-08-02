@@ -64,10 +64,13 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "AI you wear. Hands-free, context-aware, privacy-first computing in development.",
       },
-      { property: "og:image", content: heroImg },
-      { name: "twitter:image", content: heroImg },
+      { property: "og:image", content: `https://advaya-vyom.lovable.app${heroImg}` },
+      { name: "twitter:image", content: `https://advaya-vyom.lovable.app${heroImg}` },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [
+      { rel: "canonical", href: "https://advaya-vyom.lovable.app/" },
+      { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" },
+    ],
   }),
   component: Landing,
 });
@@ -235,6 +238,9 @@ function Hero() {
               style={{ background: "radial-gradient(ellipse, oklch(0.75 0.15 240 / 0.55), transparent 70%)" }}
             />
             <img
+              decoding="async"
+              loading="eager"
+              fetchPriority="high"
               src={heroImg}
               alt="VYOM AI smart glasses concept render"
               width={1600}
@@ -433,7 +439,7 @@ function Product() {
             className="glass relative mt-16 overflow-hidden rounded-[2rem]"
           >
             <div className="pointer-events-none absolute inset-0 aurora-bg opacity-40" />
-            <img
+            <img decoding="async"
               src={angleImg}
               alt="VYOM smart glasses — angled hero render"
               loading="lazy"
@@ -456,7 +462,7 @@ function Product() {
           ].map((f) => (
             <FadeIn key={f.label}>
               <div className="glass overflow-hidden rounded-3xl">
-                <img
+                <img decoding="async"
                   src={f.src}
                   alt={f.label}
                   loading="lazy"
@@ -710,7 +716,7 @@ function Founder() {
               transition={{ duration: 1.1, ease: [0.2, 0.8, 0.2, 1] }}
               className="glass group relative overflow-hidden rounded-[2rem]"
             >
-              <img
+              <img decoding="async"
                 src={founderImg}
                 alt="Ashutosh Yadav — Founder of Advaya.ai and VYOM"
                 loading="lazy"
@@ -863,15 +869,24 @@ function WhyIndia() {
 function Waitlist() {
   const join = useServerFn(joinWaitlist);
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState("");
   const [state, setState] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [message, setMessage] = useState("");
+  const startedAtRef = useRef<number>(Date.now());
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    const value = email.trim();
+    if (!/^[^\s@]+@[^\s@.]+\.[^\s@]{2,}$/.test(value)) {
+      setState("error");
+      setMessage("Please enter a valid email address.");
+      return;
+    }
     setState("loading");
     try {
-      const res = await join({ data: { email, source: "homepage" } });
+      const res = await join({
+        data: { email: value, source: "homepage", website, startedAt: startedAtRef.current },
+      });
       setMessage(
         res.alreadyJoined
           ? "You're already on the list — we'll be in touch."
@@ -884,6 +899,7 @@ function Waitlist() {
       setMessage(err instanceof Error ? err.message : "Something went wrong.");
     }
   };
+
 
   const benefits = [
     { icon: Sparkles, t: "Exclusive early access", d: "First invitations when the pilot cohort opens." },
@@ -924,15 +940,31 @@ function Waitlist() {
                     Email address
                   </label>
                   <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                    className="hidden"
+                  />
+                  <input
                     id="waitlist-email"
                     type="email"
+                    name="email"
                     required
                     maxLength={320}
+                    autoComplete="email"
+                    inputMode="email"
+                    spellCheck={false}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@company.com"
+                    aria-invalid={state === "error"}
                     className="flex-1 rounded-full bg-transparent px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
                   />
+
                   <button type="submit" disabled={state === "loading"} className="btn-primary shrink-0 disabled:opacity-70">
                     {state === "loading" ? (
                       <>
@@ -1111,7 +1143,7 @@ function Footer() {
     <footer className="border-t border-white/5 py-10">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 md:flex-row">
         <div className="flex items-center gap-3">
-          <img
+          <img decoding="async"
             src={logoWordmark}
             alt="VYOM"
             className="h-4 w-auto object-contain"

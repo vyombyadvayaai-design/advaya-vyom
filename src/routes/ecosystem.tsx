@@ -18,7 +18,7 @@ export const Route = createFileRoute("/ecosystem")({
         content: "One company. One platform. Many possible experiences.",
       },
     ],
-    links: [{ rel: "canonical", href: "/ecosystem" }],
+    links: [{ rel: "canonical", href: "https://advaya-vyom.lovable.app/ecosystem" }],
   }),
   component: EcosystemPage,
 });

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { SiteNav, SiteFooter, PageHero } from "@/components/site-chrome";
 import { joinWaitlist } from "@/lib/waitlist.functions";
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/waitlist")({
       },
       { name: "robots", content: "index,follow" },
     ],
-    links: [{ rel: "canonical", href: "/waitlist" }],
+    links: [{ rel: "canonical", href: "https://advaya-vyom.lovable.app/waitlist" }],
   }),
   component: WaitlistPage,
 });
@@ -30,21 +30,31 @@ function WaitlistPage() {
   const submit = useServerFn(joinWaitlist);
   const [state, setState] = useState<"idle" | "loading" | "done" | "error">("idle");
   const [message, setMessage] = useState<string>("");
+  const startedAtRef = useRef<number>(Date.now());
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const f = new FormData(e.currentTarget);
+    const email = String(f.get("email") ?? "").trim();
+    if (!/^[^\s@]+@[^\s@.]+\.[^\s@]{2,}$/.test(email)) {
+      setState("error");
+      setMessage("Please enter a valid email address.");
+      return;
+    }
     setState("loading");
     setMessage("");
     try {
       const res = await submit({
         data: {
-          email: String(f.get("email") ?? ""),
-          name: String(f.get("name") ?? ""),
+          email,
+          name: String(f.get("name") ?? "").trim().slice(0, 120),
           interest: String(f.get("interest") ?? ""),
           source: "waitlist-page",
+          website: String(f.get("website") ?? ""),
+          startedAt: startedAtRef.current,
         },
       });
+
       setState("done");
       setMessage(
         res.alreadyJoined
@@ -79,6 +89,14 @@ function WaitlistPage() {
             <form onSubmit={onSubmit} className="glass-strong rounded-3xl p-8 md:p-10">
               <div className="space-y-5">
                 <Field label="Full name" name="name" placeholder="Your name" />
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="hidden"
+                />
                 <Field label="Email" name="email" type="email" required placeholder="you@domain.com" />
                 <div>
                   <label className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">

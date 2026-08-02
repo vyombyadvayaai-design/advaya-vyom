@@ -19,7 +19,7 @@ export const Route = createFileRoute("/company")({
         content: "The team, mission, and philosophy behind Advaya.ai and VYOM.",
       },
     ],
-    links: [{ rel: "canonical", href: "/company" }],
+    links: [{ rel: "canonical", href: "https://advaya-vyom.lovable.app/company" }],
   }),
   component: CompanyPage,
 });
@@ -116,7 +116,7 @@ function CompanyPage() {
       {/* Founder */}
       <section className="relative section-pad">
         <div className="mx-auto max-w-6xl px-6 grid gap-10 md:grid-cols-[1fr_1.2fr] md:items-center">
-          <img src={founderAsset} alt="Ashutosh Yadav — Founder of Advaya.ai" className="rounded-3xl glass w-full object-cover" />
+          <img decoding="async" loading="lazy" src={founderAsset} alt="Ashutosh Yadav — Founder of Advaya.ai" className="rounded-3xl glass w-full object-cover" />
           <div>
             <span className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground">Founder</span>
             <h2 className="mt-3 font-display text-5xl text-gradient">Ashutosh Yadav</h2>

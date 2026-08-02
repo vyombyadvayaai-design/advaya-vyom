@@ -252,7 +252,7 @@ function MenuPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
 
             <div className="relative flex items-center justify-between border-b border-white/5 px-6 py-5 sm:px-10">
               <Link to="/" onClick={onClose} className="flex items-center gap-3">
-                <img src={logoWordmark} alt="VYOM" className="h-5 w-auto object-contain" />
+                <img decoding="async" loading="lazy" src={logoWordmark} alt="VYOM" className="h-5 w-auto object-contain" />
                 <span className="text-[10px] uppercase tracking-[0.3em] text-white/50">
                   by Advaya.ai
                 </span>
@@ -375,7 +375,7 @@ export function SiteNav() {
             }`}
           >
             <Link to="/" className="flex items-center gap-3 pl-2">
-              <img
+              <img decoding="async"
                 src={logoWordmark}
                 alt="VYOM — by Advaya.ai"
                 className="h-5 w-auto object-contain"
@@ -457,7 +457,7 @@ export function SiteFooter() {
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <Link to="/" className="flex items-center gap-3">
-              <img src={logoWordmark} alt="VYOM" className="h-5 w-auto object-contain" />
+              <img decoding="async" loading="lazy" src={logoWordmark} alt="VYOM" className="h-5 w-auto object-contain" />
               <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                 by Advaya.ai
               </span>

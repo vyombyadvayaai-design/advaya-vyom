@@ -19,7 +19,7 @@ export const Route = createFileRoute("/investors")({
       },
       { name: "robots", content: "index,follow" },
     ],
-    links: [{ rel: "canonical", href: "/investors" }],
+    links: [{ rel: "canonical", href: "https://advaya-vyom.lovable.app/investors" }],
   }),
   component: InvestorsPage,
 });
