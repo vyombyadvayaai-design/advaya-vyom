@@ -66,7 +66,7 @@ export const Route = createFileRoute("/pitch-deck")({
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: `https://advaya-vyom.lovable.app${heroImg}` },
     ],
-    links: [{ rel: "canonical", href: "/pitch-deck" }],
+    links: [{ rel: "canonical", href: "https://advaya-vyom.lovable.app/pitch-deck" }],
   }),
   component: PitchDeck,
 });

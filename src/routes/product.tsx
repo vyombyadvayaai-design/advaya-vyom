@@ -31,7 +31,7 @@ export const Route = createFileRoute("/product")({
       { property: "og:image", content: `https://advaya-vyom.lovable.app${heroImg}` },
       { name: "twitter:image", content: `https://advaya-vyom.lovable.app${heroImg}` },
     ],
-    links: [{ rel: "canonical", href: "/product" }],
+    links: [{ rel: "canonical", href: "https://advaya-vyom.lovable.app/product" }],
   }),
   component: ProductPage,
 });

@@ -21,7 +21,7 @@ export const Route = createFileRoute("/waitlist")({
       },
       { name: "robots", content: "index,follow" },
     ],
-    links: [{ rel: "canonical", href: "/waitlist" }],
+    links: [{ rel: "canonical", href: "https://advaya-vyom.lovable.app/waitlist" }],
   }),
   component: WaitlistPage,
 });

@@ -18,7 +18,7 @@ export const Route = createFileRoute("/technology")({
         content: "An AI stack designed to feel calm, useful, and private.",
       },
     ],
-    links: [{ rel: "canonical", href: "/technology" }],
+    links: [{ rel: "canonical", href: "https://advaya-vyom.lovable.app/technology" }],
   }),
   component: TechnologyPage,
 });

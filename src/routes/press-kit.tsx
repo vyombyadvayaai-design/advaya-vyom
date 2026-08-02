@@ -25,7 +25,7 @@ export const Route = createFileRoute("/press-kit")({
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: `https://advaya-vyom.lovable.app${heroImg}` },
     ],
-    links: [{ rel: "canonical", href: "/press-kit" }],
+    links: [{ rel: "canonical", href: "https://advaya-vyom.lovable.app/press-kit" }],
   }),
   component: PressKit,
 });

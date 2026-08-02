@@ -18,7 +18,7 @@ export const Route = createFileRoute("/vision")({
         content: "Technology should adapt to people, not people to technology.",
       },
     ],
-    links: [{ rel: "canonical", href: "/vision" }],
+    links: [{ rel: "canonical", href: "https://advaya-vyom.lovable.app/vision" }],
   }),
   component: VisionPage,
 });

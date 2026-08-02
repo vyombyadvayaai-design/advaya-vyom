@@ -19,7 +19,7 @@ export const Route = createFileRoute("/company")({
         content: "The team, mission, and philosophy behind Advaya.ai and VYOM.",
       },
     ],
-    links: [{ rel: "canonical", href: "/company" }],
+    links: [{ rel: "canonical", href: "https://advaya-vyom.lovable.app/company" }],
   }),
   component: CompanyPage,
 });
