@@ -62,9 +62,9 @@ export const Route = createFileRoute("/pitch-deck")({
           "Building intelligence that feels human. Explore the VYOM pitch deck.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: (heroImg as { url: string }).url },
+      { property: "og:image", content: heroImg },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: (heroImg as { url: string }).url },
+      { name: "twitter:image", content: heroImg },
     ],
     links: [{ rel: "canonical", href: "/pitch-deck" }],
   }),
@@ -151,7 +151,7 @@ function Slide01() {
       bg={
         <div className="absolute inset-0">
           <img
-            src={(heroImg as { url: string }).url}
+            src={heroImg}
             alt="VYOM AI Glasses"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
           />
@@ -402,7 +402,7 @@ function Slide05() {
         </div>
         <div className="relative">
           <div className="relative aspect-square rounded-3xl overflow-hidden glass-strong">
-            <img src={(angleImg as { url: string }).url} alt="VYOM" className="absolute inset-0 w-full h-full object-cover" />
+            <img src={angleImg} alt="VYOM" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
           </div>
           <div className="mt-4 flex flex-wrap gap-2 justify-center">
@@ -1232,7 +1232,7 @@ function Slide20() {
       title="Thank You"
       bg={
         <div className="absolute inset-0">
-          <img src={(gridImg as { url: string }).url} alt="" className="absolute inset-0 w-full h-full object-cover opacity-25" />
+          <img src={gridImg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-25" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
         </div>
       }
