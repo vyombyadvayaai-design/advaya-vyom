@@ -30,21 +30,31 @@ function WaitlistPage() {
   const submit = useServerFn(joinWaitlist);
   const [state, setState] = useState<"idle" | "loading" | "done" | "error">("idle");
   const [message, setMessage] = useState<string>("");
+  const startedAtRef = useRef<number>(Date.now());
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const f = new FormData(e.currentTarget);
+    const email = String(f.get("email") ?? "").trim();
+    if (!/^[^\s@]+@[^\s@.]+\.[^\s@]{2,}$/.test(email)) {
+      setState("error");
+      setMessage("Please enter a valid email address.");
+      return;
+    }
     setState("loading");
     setMessage("");
     try {
       const res = await submit({
         data: {
-          email: String(f.get("email") ?? ""),
-          name: String(f.get("name") ?? ""),
+          email,
+          name: String(f.get("name") ?? "").trim().slice(0, 120),
           interest: String(f.get("interest") ?? ""),
           source: "waitlist-page",
+          website: String(f.get("website") ?? ""),
+          startedAt: startedAtRef.current,
         },
       });
+
       setState("done");
       setMessage(
         res.alreadyJoined
