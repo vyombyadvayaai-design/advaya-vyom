@@ -863,15 +863,24 @@ function WhyIndia() {
 function Waitlist() {
   const join = useServerFn(joinWaitlist);
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState("");
   const [state, setState] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [message, setMessage] = useState("");
+  const startedAtRef = useRef<number>(Date.now());
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    const value = email.trim();
+    if (!/^[^\s@]+@[^\s@.]+\.[^\s@]{2,}$/.test(value)) {
+      setState("error");
+      setMessage("Please enter a valid email address.");
+      return;
+    }
     setState("loading");
     try {
-      const res = await join({ data: { email, source: "homepage" } });
+      const res = await join({
+        data: { email: value, source: "homepage", website, startedAt: startedAtRef.current },
+      });
       setMessage(
         res.alreadyJoined
           ? "You're already on the list — we'll be in touch."
@@ -884,6 +893,7 @@ function Waitlist() {
       setMessage(err instanceof Error ? err.message : "Something went wrong.");
     }
   };
+
 
   const benefits = [
     { icon: Sparkles, t: "Exclusive early access", d: "First invitations when the pilot cohort opens." },
