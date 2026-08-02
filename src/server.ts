@@ -58,7 +58,7 @@ const SECURITY_HEADERS: Record<string, string> = {
     "object-src 'none'",
     "frame-ancestors 'self' https://lovable.dev https://*.lovable.dev https://*.lovable.app",
     "form-action 'self'",
-    "script-src 'self' 'unsafe-inline' https://*.lovable.dev https://*.lovable.app",
+    `script-src 'self' 'unsafe-inline'${import.meta.env?.DEV ? " 'unsafe-eval'" : ""} https://*.lovable.dev https://*.lovable.app`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com data:",
     "img-src 'self' data: blob: https:",
