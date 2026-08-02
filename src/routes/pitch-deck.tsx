@@ -62,9 +62,9 @@ export const Route = createFileRoute("/pitch-deck")({
           "Building intelligence that feels human. Explore the VYOM pitch deck.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: heroImg },
+      { property: "og:image", content: `https://advaya-vyom.lovable.app${heroImg}` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: heroImg },
+      { name: "twitter:image", content: `https://advaya-vyom.lovable.app${heroImg}` },
     ],
     links: [{ rel: "canonical", href: "/pitch-deck" }],
   }),
@@ -150,7 +150,7 @@ function Slide01() {
       title="Cover"
       bg={
         <div className="absolute inset-0">
-          <img
+          <img decoding="async" loading="lazy"
             src={heroImg}
             alt="VYOM AI Glasses"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
@@ -402,7 +402,7 @@ function Slide05() {
         </div>
         <div className="relative">
           <div className="relative aspect-square rounded-3xl overflow-hidden glass-strong">
-            <img src={angleImg} alt="VYOM" className="absolute inset-0 w-full h-full object-cover" />
+            <img decoding="async" loading="lazy" src={angleImg} alt="VYOM" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
           </div>
           <div className="mt-4 flex flex-wrap gap-2 justify-center">
@@ -540,7 +540,7 @@ function Slide08() {
     <SlideShell index={8} title="Why VYOM">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div className="relative rounded-3xl overflow-hidden aspect-[4/5] glass-strong">
-          <img src={founderImg} alt="Founder" className="absolute inset-0 w-full h-full object-cover" />
+          <img decoding="async" loading="lazy" src={founderImg} alt="Founder" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
         </div>
         <div>
@@ -921,7 +921,7 @@ function Slide15() {
     <SlideShell index={15} title="The Founder">
       <div className="grid md:grid-cols-5 gap-10 items-start">
         <div className="md:col-span-2 relative rounded-3xl overflow-hidden aspect-[4/5] glass-strong">
-          <img src={founderImg} alt="Ashutosh Yadav" className="absolute inset-0 w-full h-full object-cover" />
+          <img decoding="async" loading="lazy" src={founderImg} alt="Ashutosh Yadav" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
         </div>
         <div className="md:col-span-3">
@@ -1232,13 +1232,13 @@ function Slide20() {
       title="Thank You"
       bg={
         <div className="absolute inset-0">
-          <img src={gridImg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-25" />
+          <img decoding="async" loading="lazy" src={gridImg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-25" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
         </div>
       }
     >
       <div className="flex flex-col items-center text-center gap-8 pt-6 md:pt-12">
-        <img src={logoWordmark} alt="VYOM" className="h-10 opacity-90" />
+        <img decoding="async" loading="lazy" src={logoWordmark} alt="VYOM" className="h-10 opacity-90" />
         <h2 className="font-display text-5xl md:text-7xl text-balance text-gradient">
           The journey begins here.
         </h2>

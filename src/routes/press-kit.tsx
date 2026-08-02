@@ -21,9 +21,9 @@ export const Route = createFileRoute("/press-kit")({
           "Company overview, founder bio, fact sheet, and media contact for Advaya.ai and VYOM.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: heroImg },
+      { property: "og:image", content: `https://advaya-vyom.lovable.app${heroImg}` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: heroImg },
+      { name: "twitter:image", content: `https://advaya-vyom.lovable.app${heroImg}` },
     ],
     links: [{ rel: "canonical", href: "/press-kit" }],
   }),
@@ -87,7 +87,7 @@ function PressKit() {
           >
             <ArrowLeft className="h-3.5 w-3.5" /> Back
           </Link>
-          <img src={logoWordmark} alt="VYOM" className="h-4 w-auto object-contain" />
+          <img decoding="async" loading="lazy" src={logoWordmark} alt="VYOM" className="h-4 w-auto object-contain" />
           <button
             onClick={handlePrint}
             className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 text-xs uppercase tracking-[0.2em] text-muted-foreground transition hover:border-white/40 hover:text-foreground"
@@ -208,7 +208,7 @@ function PressKit() {
       <Section id="founder" eyebrow="03 — Founder" title="Ashutosh Yadav">
         <div className="grid gap-10 md:grid-cols-[240px_1fr] md:items-start">
           <div className="overflow-hidden rounded-2xl border border-white/10">
-            <img
+            <img decoding="async"
               src={founderImg}
               alt="Ashutosh Yadav, Founder of Advaya.ai"
               className="h-full w-full object-cover"

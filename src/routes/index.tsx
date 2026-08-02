@@ -64,8 +64,8 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "AI you wear. Hands-free, context-aware, privacy-first computing in development.",
       },
-      { property: "og:image", content: heroImg },
-      { name: "twitter:image", content: heroImg },
+      { property: "og:image", content: `https://advaya-vyom.lovable.app${heroImg}` },
+      { name: "twitter:image", content: `https://advaya-vyom.lovable.app${heroImg}` },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
@@ -234,7 +234,7 @@ function Hero() {
             <div className="absolute inset-x-10 bottom-0 h-40 rounded-[50%] blur-3xl"
               style={{ background: "radial-gradient(ellipse, oklch(0.75 0.15 240 / 0.55), transparent 70%)" }}
             />
-            <img
+            <img decoding="async" loading="lazy"
               src={heroImg}
               alt="VYOM AI smart glasses concept render"
               width={1600}
@@ -433,7 +433,7 @@ function Product() {
             className="glass relative mt-16 overflow-hidden rounded-[2rem]"
           >
             <div className="pointer-events-none absolute inset-0 aurora-bg opacity-40" />
-            <img
+            <img decoding="async"
               src={angleImg}
               alt="VYOM smart glasses — angled hero render"
               loading="lazy"
@@ -456,7 +456,7 @@ function Product() {
           ].map((f) => (
             <FadeIn key={f.label}>
               <div className="glass overflow-hidden rounded-3xl">
-                <img
+                <img decoding="async"
                   src={f.src}
                   alt={f.label}
                   loading="lazy"
@@ -710,7 +710,7 @@ function Founder() {
               transition={{ duration: 1.1, ease: [0.2, 0.8, 0.2, 1] }}
               className="glass group relative overflow-hidden rounded-[2rem]"
             >
-              <img
+              <img decoding="async"
                 src={founderImg}
                 alt="Ashutosh Yadav — Founder of Advaya.ai and VYOM"
                 loading="lazy"
@@ -1137,7 +1137,7 @@ function Footer() {
     <footer className="border-t border-white/5 py-10">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 md:flex-row">
         <div className="flex items-center gap-3">
-          <img
+          <img decoding="async"
             src={logoWordmark}
             alt="VYOM"
             className="h-4 w-auto object-contain"
