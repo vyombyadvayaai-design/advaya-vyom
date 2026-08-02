@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://advaya-vyom.lovable.app/sitemap.xml
