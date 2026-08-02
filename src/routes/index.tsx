@@ -67,7 +67,10 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: `https://advaya-vyom.lovable.app${heroImg}` },
       { name: "twitter:image", content: `https://advaya-vyom.lovable.app${heroImg}` },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [
+      { rel: "canonical", href: "https://advaya-vyom.lovable.app/" },
+      { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" },
+    ],
   }),
   component: Landing,
 });
@@ -234,7 +237,10 @@ function Hero() {
             <div className="absolute inset-x-10 bottom-0 h-40 rounded-[50%] blur-3xl"
               style={{ background: "radial-gradient(ellipse, oklch(0.75 0.15 240 / 0.55), transparent 70%)" }}
             />
-            <img decoding="async" loading="lazy"
+            <img
+              decoding="async"
+              loading="eager"
+              fetchPriority="high"
               src={heroImg}
               alt="VYOM AI smart glasses concept render"
               width={1600}
