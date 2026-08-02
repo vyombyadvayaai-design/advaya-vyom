@@ -934,15 +934,31 @@ function Waitlist() {
                     Email address
                   </label>
                   <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                    className="hidden"
+                  />
+                  <input
                     id="waitlist-email"
                     type="email"
+                    name="email"
                     required
                     maxLength={320}
+                    autoComplete="email"
+                    inputMode="email"
+                    spellCheck={false}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@company.com"
+                    aria-invalid={state === "error"}
                     className="flex-1 rounded-full bg-transparent px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
                   />
+
                   <button type="submit" disabled={state === "loading"} className="btn-primary shrink-0 disabled:opacity-70">
                     {state === "loading" ? (
                       <>
