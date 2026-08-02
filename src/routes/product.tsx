@@ -12,9 +12,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { SiteNav, SiteFooter, PageHero, StageChip } from "@/components/site-chrome";
-import heroImg from "@/assets/vyom-hero.png.asset.json";
-import angleImg from "@/assets/vyom-angle.png.asset.json";
-import gridImg from "@/assets/vyom-grid.png.asset.json";
+import { vyomHero as heroImg, vyomAngle as angleImg, vyomGrid as gridImg } from "@/lib/assets";
 
 export const Route = createFileRoute("/product")({
   head: () => ({
@@ -30,8 +28,8 @@ export const Route = createFileRoute("/product")({
         property: "og:description",
         content: "AI-first smart glasses in development, designed around you.",
       },
-      { property: "og:image", content: (heroImg as { url: string }).url },
-      { name: "twitter:image", content: (heroImg as { url: string }).url },
+      { property: "og:image", content: heroImg },
+      { name: "twitter:image", content: heroImg },
     ],
     links: [{ rel: "canonical", href: "/product" }],
   }),
@@ -88,7 +86,7 @@ function ProductPage() {
             transition={{ duration: 0.9 }}
             className="relative overflow-hidden rounded-3xl glass"
           >
-            <img src={(angleImg as { url: string }).url} alt="VYOM smart glasses" className="w-full object-cover" />
+            <img src={angleImg} alt="VYOM smart glasses" className="w-full object-cover" />
           </motion.div>
         </div>
       </section>
@@ -150,8 +148,8 @@ function ProductPage() {
       {/* Design gallery */}
       <Section eyebrow="Concept renders" title="A first look at the direction.">
         <div className="grid gap-6 md:grid-cols-2">
-          <img src={(heroImg as { url: string }).url} alt="VYOM front render" className="rounded-3xl glass w-full object-cover" />
-          <img src={(gridImg as { url: string }).url} alt="VYOM side render" className="rounded-3xl glass w-full object-cover" />
+          <img src={heroImg} alt="VYOM front render" className="rounded-3xl glass w-full object-cover" />
+          <img src={gridImg} alt="VYOM side render" className="rounded-3xl glass w-full object-cover" />
         </div>
         <p className="mt-4 text-center text-xs text-muted-foreground">
           Renders shown are early design concepts and do not represent the final product.
