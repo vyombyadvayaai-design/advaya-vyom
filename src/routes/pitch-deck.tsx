@@ -29,22 +29,15 @@ import {
   Download,
 } from "lucide-react";
 import { z } from "zod";
-import heroImg from "@/assets/vyom-hero.png.asset.json";
-import angleImg from "@/assets/vyom-angle.png.asset.json";
-import gridImg from "@/assets/vyom-grid.png.asset.json";
-import founderAsset from "@/assets/founder.png.asset.json";
-import logoWordmarkAsset from "@/assets/vyom-logo-wordmark.png.asset.json";
-import pitchPdf from "@/assets/pitch_deck.pdf.asset.json";
-import companyProfilePdf from "@/assets/company_profile.pdf.asset.json";
-import founderBookPdf from "@/assets/founder_book.pdf.asset.json";
+import { vyomHero as heroImg, vyomAngle as angleImg, vyomGrid as gridImg, founderImage as founderAsset, vyomLogoWordmark as logoWordmarkAsset, pitchDeckPdfUrl as pitchPdf, companyProfilePdfUrl as companyProfilePdf, founderBookPdfUrl as founderBookPdf } from "@/lib/assets";
 
-const founderImg = founderAsset.url;
-const logoWordmark = logoWordmarkAsset.url;
+const founderImg = founderAsset;
+const logoWordmark = logoWordmarkAsset;
 
 const DOWNLOADS = [
-  { label: "Pitch", href: pitchPdf.url, file: "VYOM-Pitch.pdf" },
-  { label: "Company Profile", href: companyProfilePdf.url, file: "Advaya-Company-Profile.pdf" },
-  { label: "Founder Book", href: founderBookPdf.url, file: "Ashutosh-Yadav.pdf" },
+  { label: "Pitch", href: pitchPdf, file: "VYOM-Pitch.pdf" },
+  { label: "Company Profile", href: companyProfilePdf, file: "Advaya-Company-Profile.pdf" },
+  { label: "Founder Book", href: founderBookPdf, file: "Ashutosh-Yadav.pdf" },
 ];
 
 const searchSchema = z.object({

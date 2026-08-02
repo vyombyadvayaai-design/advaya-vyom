@@ -1,11 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Mail, Instagram, Linkedin, Download, Quote } from "lucide-react";
-import founderAsset from "@/assets/founder.png.asset.json";
-import logoWordmarkAsset from "@/assets/vyom-logo-wordmark.png.asset.json";
-import heroImg from "@/assets/vyom-hero.png.asset.json";
+import { founderImage as founderAsset, vyomLogoWordmark as logoWordmarkAsset, vyomHero as heroImg } from "@/lib/assets";
 
-const founderImg = founderAsset.url;
-const logoWordmark = logoWordmarkAsset.url;
+const founderImg = founderAsset;
+const logoWordmark = logoWordmarkAsset;
 
 export const Route = createFileRoute("/press-kit")({
   head: () => ({

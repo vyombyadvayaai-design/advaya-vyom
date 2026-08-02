@@ -12,9 +12,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { SiteNav, SiteFooter, PageHero, StageChip } from "@/components/site-chrome";
-import heroImg from "@/assets/vyom-hero.png.asset.json";
-import angleImg from "@/assets/vyom-angle.png.asset.json";
-import gridImg from "@/assets/vyom-grid.png.asset.json";
+import { vyomHero as heroImg, vyomAngle as angleImg, vyomGrid as gridImg } from "@/lib/assets";
 
 export const Route = createFileRoute("/product")({
   head: () => ({

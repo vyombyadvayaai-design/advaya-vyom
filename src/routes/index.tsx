@@ -42,16 +42,10 @@ import {
 import { useServerFn } from "@tanstack/react-start";
 import { joinWaitlist } from "@/lib/waitlist.functions";
 import { SiteNav } from "@/components/site-chrome";
-import heroImg from "@/assets/vyom-hero.png.asset.json";
+import { vyomHero as heroImg, vyomAngle as angleImg, vyomGrid as gridImg, founderImage as founderAsset, vyomLogoWordmark as logoWordmarkAsset, companyProfilePdfUrl as companyPdf, founderBookPdfUrl as founderPdf } from "@/lib/assets";
 
-import angleImg from "@/assets/vyom-angle.png.asset.json";
-import gridImg from "@/assets/vyom-grid.png.asset.json";
-import founderAsset from "@/assets/founder.png.asset.json";
-import logoWordmarkAsset from "@/assets/vyom-logo-wordmark.png.asset.json";
-import companyPdf from "@/assets/company_profile.pdf.asset.json";
-import founderPdf from "@/assets/founder_book.pdf.asset.json";
-const founderImg = founderAsset.url;
-const logoWordmark = logoWordmarkAsset.url;
+const founderImg = founderAsset;
+const logoWordmark = logoWordmarkAsset;
 
 
 export const Route = createFileRoute("/")({
@@ -241,7 +235,7 @@ function Hero() {
               style={{ background: "radial-gradient(ellipse, oklch(0.75 0.15 240 / 0.55), transparent 70%)" }}
             />
             <img
-              src={heroImg.url}
+              src={heroImg}
               alt="VYOM AI smart glasses concept render"
               width={1600}
               height={1200}
@@ -440,7 +434,7 @@ function Product() {
           >
             <div className="pointer-events-none absolute inset-0 aurora-bg opacity-40" />
             <img
-              src={angleImg.url}
+              src={angleImg}
               alt="VYOM smart glasses — angled hero render"
               loading="lazy"
               width={1600}
@@ -457,8 +451,8 @@ function Product() {
         {/* Grid of views */}
         <div className="mt-8 grid gap-8 md:grid-cols-2">
           {[
-            { label: "Multiple angles · Frame study", src: gridImg.url },
-            { label: "Front-facing · Optical clarity", src: heroImg.url },
+            { label: "Multiple angles · Frame study", src: gridImg },
+            { label: "Front-facing · Optical clarity", src: heroImg },
           ].map((f) => (
             <FadeIn key={f.label}>
               <div className="glass overflow-hidden rounded-3xl">
@@ -983,8 +977,8 @@ function Media() {
   const cards = [
     { icon: FileText, t: "Pitch Deck", s: "Interactive · 20 slides", d: "The full investor narrative, slide by slide.", href: "/pitch-deck", ext: false },
     { icon: Newspaper, t: "Press Kit", s: "View", d: "Company facts, founder bio, brand assets.", href: "/press-kit", ext: false },
-    { icon: Briefcase, t: "Company Profile", s: "PDF", d: "Overview of Advaya.ai and the VYOM platform.", href: companyPdf.url, ext: true },
-    { icon: BookOpen, t: "Founder Book", s: "PDF", d: "The story and philosophy behind the company.", href: founderPdf.url, ext: true },
+    { icon: Briefcase, t: "Company Profile", s: "PDF", d: "Overview of Advaya.ai and the VYOM platform.", href: companyPdf, ext: true },
+    { icon: BookOpen, t: "Founder Book", s: "PDF", d: "The story and philosophy behind the company.", href: founderPdf, ext: true },
   ];
   return (
     <section id="resources" className="section-pad relative scroll-mt-24">

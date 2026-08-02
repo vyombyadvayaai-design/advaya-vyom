@@ -2,12 +2,9 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { X, ArrowUpRight } from "lucide-react";
-import logoWordmarkAsset from "@/assets/vyom-logo-wordmark.png.asset.json";
-import companyProfilePdf from "@/assets/company_profile.pdf.asset.json";
-import founderBookPdf from "@/assets/founder_book.pdf.asset.json";
-import pitchDeckPdf from "@/assets/pitch_deck.pdf.asset.json";
+import { vyomLogoWordmark as logoWordmarkAsset, companyProfilePdfUrl as companyProfilePdf, founderBookPdfUrl as founderBookPdf, pitchDeckPdfUrl as pitchDeckPdf } from "@/lib/assets";
 
-const logoWordmark = logoWordmarkAsset.url;
+const logoWordmark = logoWordmarkAsset;
 
 const desktopLinks = [
   { to: "/product", label: "Product" },
@@ -61,11 +58,11 @@ const menuGroups: MenuGroup[] = [
       { label: "Press Kit", to: "/press-kit" },
       { label: "Media Kit", to: "/press-kit" },
       { label: "Brand Assets", to: "/press-kit" },
-      { label: "Company Profile (PDF)", href: companyProfilePdf.url, external: true },
-      { label: "Founder Bio (PDF)", href: founderBookPdf.url, external: true },
-      { label: "Founder Story (PDF)", href: founderBookPdf.url, external: true },
+      { label: "Company Profile (PDF)", href: companyProfilePdf, external: true },
+      { label: "Founder Bio (PDF)", href: founderBookPdf, external: true },
+      { label: "Founder Story (PDF)", href: founderBookPdf, external: true },
       { label: "Pitch Deck", to: "/pitch-deck" },
-      { label: "Pitch Deck (PDF)", href: pitchDeckPdf.url, external: true },
+      { label: "Pitch Deck (PDF)", href: pitchDeckPdf, external: true },
       { label: "FAQ", to: "/investors" },
     ],
   },
