@@ -11,9 +11,6 @@ import {
   MapPin,
   Mail,
   Instagram,
-  Linkedin,
-  Youtube,
-  Github,
   Twitter,
   Eye,
   Brain,
@@ -1080,8 +1077,11 @@ function Social() {
             {socials.map((s) => (
               <a
                 key={s.t}
-                href="#"
+                href={s.href}
                 aria-label={s.t}
+                {...(s.href.startsWith("http")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
                 className="glass grid h-10 w-10 place-items-center rounded-full transition hover:border-white/25"
               >
                 <s.icon className="h-4 w-4 text-foreground/80" strokeWidth={1.5} />
