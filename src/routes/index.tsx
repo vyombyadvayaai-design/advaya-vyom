@@ -1097,11 +1097,7 @@ function Social() {
   );
 }
 
-        </div>
-      </div>
-    </section>
-  );
-}
+
 
 function Contact() {
   return (
