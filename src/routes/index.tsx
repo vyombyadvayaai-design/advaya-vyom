@@ -1061,12 +1061,13 @@ function Media() {
 /* ---------------------------------------------------------------- */
 function Social() {
   const socials = [
-    { icon: Instagram, t: "Instagram" },
-    { icon: Linkedin, t: "LinkedIn" },
-    { icon: Youtube, t: "YouTube" },
-    { icon: Twitter, t: "X" },
-    { icon: Github, t: "GitHub" },
-    { icon: Mail, t: "Email" },
+    {
+      icon: Instagram,
+      t: "Instagram",
+      href: "https://www.instagram.com/ashhvision?igsh=djg1Mnlmb2UxNW04",
+    },
+    { icon: Twitter, t: "X", href: "https://x.com/ashh_vision" },
+    { icon: Mail, t: "Email", href: "mailto:hello@advaya.ai" },
   ];
   return (
     <section className="relative py-16">
