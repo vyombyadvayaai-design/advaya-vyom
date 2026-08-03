@@ -85,10 +85,12 @@ const menuGroups: MenuGroup[] = [
 ];
 
 const socials: MenuItem[] = [
-  { label: "X", href: "https://x.com/advayaai", external: true },
-  { label: "Instagram", href: "https://instagram.com/advaya.ai", external: true },
-  { label: "LinkedIn", href: "https://linkedin.com/company/advaya-ai", external: true },
-  { label: "YouTube", href: "https://youtube.com/@advayaai", external: true },
+  { label: "X", href: "https://x.com/ashh_vision", external: true },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/ashhvision?igsh=djg1Mnlmb2UxNW04",
+    external: true,
+  },
 ];
 
 function useLockBodyScroll(locked: boolean) {
