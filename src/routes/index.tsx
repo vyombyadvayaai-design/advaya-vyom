@@ -1061,12 +1061,13 @@ function Media() {
 /* ---------------------------------------------------------------- */
 function Social() {
   const socials = [
-    { icon: Instagram, t: "Instagram" },
-    { icon: Linkedin, t: "LinkedIn" },
-    { icon: Youtube, t: "YouTube" },
-    { icon: Twitter, t: "X" },
-    { icon: Github, t: "GitHub" },
-    { icon: Mail, t: "Email" },
+    {
+      icon: Instagram,
+      t: "Instagram",
+      href: "https://www.instagram.com/ashhvision?igsh=djg1Mnlmb2UxNW04",
+    },
+    { icon: Twitter, t: "X", href: "https://x.com/ashh_vision" },
+    { icon: Mail, t: "Email", href: "mailto:hello@advaya.ai" },
   ];
   return (
     <section className="relative py-16">
@@ -1079,7 +1080,10 @@ function Social() {
             {socials.map((s) => (
               <a
                 key={s.t}
-                href="#"
+                href={s.href}
+                {...(s.href.startsWith("http")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
                 aria-label={s.t}
                 className="glass grid h-10 w-10 place-items-center rounded-full transition hover:border-white/25"
               >
@@ -1087,6 +1091,12 @@ function Social() {
               </a>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
         </div>
       </div>
     </section>
