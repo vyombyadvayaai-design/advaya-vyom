@@ -1251,6 +1251,7 @@ function Landing() {
       <Vision />
       <Product />
       <WhyVyom />
+      <InAction />
       <Roadmap />
       <Founder />
       <WhyIndia />
