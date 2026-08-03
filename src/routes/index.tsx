@@ -588,6 +588,76 @@ function WhyVyom() {
 }
 
 /* ---------------------------------------------------------------- */
+/*  See VYOM in Action                                                */
+/* ---------------------------------------------------------------- */
+function InAction() {
+  return (
+    <section id="in-action" className="section-pad relative scroll-mt-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <FadeIn>
+          <div className="max-w-2xl">
+            <SectionLabel>See VYOM in action</SectionLabel>
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,4rem)] leading-[1.02] tracking-[-0.02em] text-gradient">
+              A first look,
+              <br />
+              <span className="italic text-muted-foreground/80">coming soon.</span>
+            </h2>
+          </div>
+        </FadeIn>
+
+        <div className="mt-14 grid gap-3 lg:grid-cols-[1.6fr_1fr]">
+          <FadeIn>
+            <figure className="group glass relative overflow-hidden rounded-2xl">
+              <div className="relative aspect-video w-full overflow-hidden">
+                <img
+                  src={angleImg}
+                  alt="VYOM smart glasses shown at an angle — product demo preview"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover opacity-60 transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                <div className="absolute inset-0 grid place-items-center">
+                  <div className="glass-strong flex items-center gap-3 rounded-full px-5 py-2.5 text-xs uppercase tracking-[0.28em] text-muted-foreground">
+                    <Clock className="h-3.5 w-3.5 text-accent" strokeWidth={1.5} />
+                    Product film in production
+                  </div>
+                </div>
+              </div>
+              <figcaption className="flex flex-wrap items-center justify-between gap-3 border-t border-white/5 px-6 py-5">
+                <span className="text-sm text-foreground">The VYOM demo film</span>
+                <span className="text-xs text-muted-foreground">
+                  Released to the waitlist first.
+                </span>
+              </figcaption>
+            </figure>
+          </FadeIn>
+
+          <FadeIn delay={0.06}>
+            <div className="glass flex h-full flex-col justify-between rounded-2xl p-6">
+              <div>
+                <Sparkles className="mb-8 h-5 w-5 text-accent" strokeWidth={1.5} />
+                <div className="text-base font-medium text-foreground">
+                  Interactive prototype
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  A browser walkthrough of the VYOM interface — glance, ask, remember — is being
+                  built alongside the first developer units.
+                </p>
+              </div>
+              <a href="#waitlist" className="btn-primary mt-8 inline-flex text-sm">
+                Get early access
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------------- */
 /*  Roadmap                                                           */
 /* ---------------------------------------------------------------- */
 function Roadmap() {
