@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Mail, Instagram, Twitter, Download, Quote } from "lucide-react";
+import { ArrowLeft, Mail, Instagram, Linkedin, Download, Quote } from "lucide-react";
 import { founderImage as founderAsset, vyomLogoWordmark as logoWordmarkAsset, vyomHero as heroImg } from "@/lib/assets";
 
 const founderImg = founderAsset;
@@ -446,24 +446,18 @@ function PressKit() {
               hello@advaya.ai
             </a>
             <a
-              href="https://www.instagram.com/ashhvision?igsh=djg1Mnlmb2UxNW04"
+              href="https://www.instagram.com/vyom.vision?igsh=MWV0NWtiejV5MmpzMg=="
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 rounded-lg border border-white/10 px-4 py-3 text-sm text-foreground transition hover:border-white/30"
             >
               <Instagram className="h-4 w-4 text-muted-foreground" />
-              @ashhvision
+              @vyom.vision
             </a>
-            <a
-              href="https://x.com/ashh_vision"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 rounded-lg border border-white/10 px-4 py-3 text-sm text-foreground transition hover:border-white/30"
-            >
-              <Twitter className="h-4 w-4 text-muted-foreground" />
-              @ashh_vision
-            </a>
-
+            <div className="flex items-center gap-3 rounded-lg border border-white/10 px-4 py-3 text-sm text-muted-foreground">
+              <Linkedin className="h-4 w-4" />
+              LinkedIn — coming soon
+            </div>
             <a
               href="mailto:press@advaya.ai"
               className="flex items-center gap-3 rounded-lg border border-white/10 px-4 py-3 text-sm text-foreground transition hover:border-white/30"
