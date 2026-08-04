@@ -245,6 +245,24 @@ function Hero() {
             ))}
           </motion.ul>
 
+          <motion.dl
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="mx-auto mt-8 grid max-w-3xl gap-3 text-left sm:grid-cols-3"
+          >
+            {[
+              { k: "What it is", v: "AI-first smart glasses — a wearable computer with no screen to stare at." },
+              { k: "Why it exists", v: "So you can stay in the moment instead of looking down to understand it." },
+              { k: "Why it's different", v: "Memory, context and privacy designed in from the first sketch." },
+            ].map((c) => (
+              <div key={c.k} className="glass rounded-2xl px-5 py-4">
+                <dt className="text-[10px] uppercase tracking-[0.25em] text-accent">{c.k}</dt>
+                <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.v}</dd>
+              </div>
+            ))}
+          </motion.dl>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
