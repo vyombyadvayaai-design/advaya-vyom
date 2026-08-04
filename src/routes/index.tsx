@@ -653,6 +653,42 @@ function InAction() {
             </div>
           </FadeIn>
         </div>
+
+        <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              icon: Eye,
+              t: "Product simulation",
+              s: "In design",
+              d: "A guided simulation of a day with VYOM — what it notices, and when it stays silent.",
+            },
+            {
+              icon: Compass,
+              t: "Product walkthrough",
+              s: "In production",
+              d: "A narrated tour of the frame, the optics and the interaction model.",
+            },
+            {
+              icon: Cpu,
+              t: "Developer prototype",
+              s: "Planned",
+              d: "First functional units, shared with a small cohort of builders before launch.",
+            },
+          ].map((c, i) => (
+            <FadeIn key={c.t} delay={i * 0.04}>
+              <div className="glass flex h-full flex-col rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:border-white/20">
+                <div className="flex items-start justify-between gap-3">
+                  <c.icon className="h-5 w-5 text-accent" strokeWidth={1.5} />
+                  <span className="rounded-full border border-white/12 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                    {c.s}
+                  </span>
+                </div>
+                <div className="mt-8 text-base font-medium text-foreground">{c.t}</div>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );
