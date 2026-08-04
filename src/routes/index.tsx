@@ -39,6 +39,7 @@ import {
 import { useServerFn } from "@tanstack/react-start";
 import { joinWaitlist } from "@/lib/waitlist.functions";
 import { SiteNav } from "@/components/site-chrome";
+import { TechStack, Signals, FounderLetter } from "@/components/home-sections";
 import { vyomHero as heroImg, vyomAngle as angleImg, vyomGrid as gridImg, founderImage as founderAsset, vyomLogoWordmark as logoWordmarkAsset, companyProfilePdfUrl as companyPdf, founderBookPdfUrl as founderPdf } from "@/lib/assets";
 
 const founderImg = founderAsset;
