@@ -39,6 +39,7 @@ import {
 import { useServerFn } from "@tanstack/react-start";
 import { joinWaitlist } from "@/lib/waitlist.functions";
 import { SiteNav } from "@/components/site-chrome";
+import { TechStack, Signals, FounderLetter } from "@/components/home-sections";
 import { vyomHero as heroImg, vyomAngle as angleImg, vyomGrid as gridImg, founderImage as founderAsset, vyomLogoWordmark as logoWordmarkAsset, companyProfilePdfUrl as companyPdf, founderBookPdfUrl as founderPdf } from "@/lib/assets";
 
 const founderImg = founderAsset;
@@ -67,6 +68,48 @@ export const Route = createFileRoute("/")({
     links: [
       { rel: "canonical", href: "https://advaya-vyom.lovable.app/" },
       { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "Advaya.ai",
+              url: "https://advaya-vyom.lovable.app/",
+              logo: `https://advaya-vyom.lovable.app${logoWordmarkAsset}`,
+              foundingDate: "2026",
+              founder: { "@type": "Person", name: "Ashutosh Yadav", jobTitle: "Founder" },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Lucknow",
+                addressRegion: "Uttar Pradesh",
+                addressCountry: "IN",
+              },
+              sameAs: [
+                "https://x.com/ashh_vision",
+                "https://www.instagram.com/ashhvision",
+              ],
+            },
+            {
+              "@type": "WebSite",
+              name: "VYOM by Advaya.ai",
+              url: "https://advaya-vyom.lovable.app/",
+            },
+            {
+              "@type": "Product",
+              name: "VYOM",
+              brand: { "@type": "Brand", name: "Advaya.ai" },
+              category: "AI smart glasses",
+              image: `https://advaya-vyom.lovable.app${heroImg}`,
+              description:
+                "VYOM is an AI-first wearable platform in development — hands-free smart glasses with memory, vision and voice, designed privacy-first in India.",
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: Landing,
@@ -201,6 +244,24 @@ function Hero() {
               </li>
             ))}
           </motion.ul>
+
+          <motion.dl
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="mx-auto mt-8 grid max-w-3xl gap-3 text-left sm:grid-cols-3"
+          >
+            {[
+              { k: "What it is", v: "AI-first smart glasses — a wearable computer with no screen to stare at." },
+              { k: "Why it exists", v: "So you can stay in the moment instead of looking down to understand it." },
+              { k: "Why it's different", v: "Memory, context and privacy designed in from the first sketch." },
+            ].map((c) => (
+              <div key={c.k} className="glass rounded-2xl px-5 py-4">
+                <dt className="text-[10px] uppercase tracking-[0.25em] text-accent">{c.k}</dt>
+                <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.v}</dd>
+              </div>
+            ))}
+          </motion.dl>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -651,6 +712,42 @@ function InAction() {
               </a>
             </div>
           </FadeIn>
+        </div>
+
+        <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              icon: Eye,
+              t: "Product simulation",
+              s: "In design",
+              d: "A guided simulation of a day with VYOM — what it notices, and when it stays silent.",
+            },
+            {
+              icon: Compass,
+              t: "Product walkthrough",
+              s: "In production",
+              d: "A narrated tour of the frame, the optics and the interaction model.",
+            },
+            {
+              icon: Cpu,
+              t: "Developer prototype",
+              s: "Planned",
+              d: "First functional units, shared with a small cohort of builders before launch.",
+            },
+          ].map((c, i) => (
+            <FadeIn key={c.t} delay={i * 0.04}>
+              <div className="glass flex h-full flex-col rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:border-white/20">
+                <div className="flex items-start justify-between gap-3">
+                  <c.icon className="h-5 w-5 text-accent" strokeWidth={1.5} />
+                  <span className="rounded-full border border-white/12 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                    {c.s}
+                  </span>
+                </div>
+                <div className="mt-8 text-base font-medium text-foreground">{c.t}</div>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
+              </div>
+            </FadeIn>
+          ))}
         </div>
       </div>
     </section>
@@ -1252,8 +1349,11 @@ function Landing() {
       <Product />
       <WhyVyom />
       <InAction />
+      <TechStack />
       <Roadmap />
+      <Signals />
       <Founder />
+      <FounderLetter />
       <WhyIndia />
       <Waitlist />
       <Media />
