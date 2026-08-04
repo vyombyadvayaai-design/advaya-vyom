@@ -69,6 +69,48 @@ export const Route = createFileRoute("/")({
       { rel: "canonical", href: "https://advaya-vyom.lovable.app/" },
       { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "Advaya.ai",
+              url: "https://advaya-vyom.lovable.app/",
+              logo: `https://advaya-vyom.lovable.app${logoWordmarkAsset}`,
+              foundingDate: "2026",
+              founder: { "@type": "Person", name: "Ashutosh Yadav", jobTitle: "Founder" },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Lucknow",
+                addressRegion: "Uttar Pradesh",
+                addressCountry: "IN",
+              },
+              sameAs: [
+                "https://x.com/ashh_vision",
+                "https://www.instagram.com/ashhvision",
+              ],
+            },
+            {
+              "@type": "WebSite",
+              name: "VYOM by Advaya.ai",
+              url: "https://advaya-vyom.lovable.app/",
+            },
+            {
+              "@type": "Product",
+              name: "VYOM",
+              brand: { "@type": "Brand", name: "Advaya.ai" },
+              category: "AI smart glasses",
+              image: `https://advaya-vyom.lovable.app${heroImg}`,
+              description:
+                "VYOM is an AI-first wearable platform in development — hands-free smart glasses with memory, vision and voice, designed privacy-first in India.",
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: Landing,
 });
