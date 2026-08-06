@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WaitlistRouteImport } from './routes/waitlist'
 import { Route as VisionRouteImport } from './routes/vision'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TechnologyRouteImport } from './routes/technology'
 import { Route as ProductRouteImport } from './routes/product'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -33,6 +34,11 @@ const WaitlistRoute = WaitlistRouteImport.update({
 const VisionRoute = VisionRouteImport.update({
   id: '/vision',
   path: '/vision',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TechnologyRoute = TechnologyRouteImport.update({
@@ -115,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
   '/technology': typeof TechnologyRoute
+  '/terms': typeof TermsRoute
   '/vision': typeof VisionRoute
   '/waitlist': typeof WaitlistRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -132,6 +139,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
   '/technology': typeof TechnologyRoute
+  '/terms': typeof TermsRoute
   '/vision': typeof VisionRoute
   '/waitlist': typeof WaitlistRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -150,6 +158,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
   '/technology': typeof TechnologyRoute
+  '/terms': typeof TermsRoute
   '/vision': typeof VisionRoute
   '/waitlist': typeof WaitlistRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -169,6 +178,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/product'
     | '/technology'
+    | '/terms'
     | '/vision'
     | '/waitlist'
     | '/.mcp/list-tools'
@@ -186,6 +196,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/product'
     | '/technology'
+    | '/terms'
     | '/vision'
     | '/waitlist'
     | '/.mcp/list-tools'
@@ -203,6 +214,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/product'
     | '/technology'
+    | '/terms'
     | '/vision'
     | '/waitlist'
     | '/.mcp/list-tools'
@@ -221,6 +233,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ProductRoute: typeof ProductRoute
   TechnologyRoute: typeof TechnologyRoute
+  TermsRoute: typeof TermsRoute
   VisionRoute: typeof VisionRoute
   WaitlistRoute: typeof WaitlistRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
@@ -242,6 +255,13 @@ declare module '@tanstack/react-router' {
       path: '/vision'
       fullPath: '/vision'
       preLoaderRoute: typeof VisionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/technology': {
@@ -349,6 +369,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ProductRoute: ProductRoute,
   TechnologyRoute: TechnologyRoute,
+  TermsRoute: TermsRoute,
   VisionRoute: VisionRoute,
   WaitlistRoute: WaitlistRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
