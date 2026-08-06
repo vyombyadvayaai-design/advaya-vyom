@@ -1348,9 +1348,9 @@ function Footer() {
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-6 text-xs text-muted-foreground">
-          <a href="#" className="transition hover:text-foreground">Privacy</a>
-          <a href="#" className="transition hover:text-foreground">Terms</a>
-          <a href="#" className="transition hover:text-foreground">Cookies</a>
+          <Link to="/privacy" className="transition hover:text-foreground">Privacy Policy</Link>
+          <Link to="/terms" className="transition hover:text-foreground">Terms of Service</Link>
+          <Link to="/cookies" className="transition hover:text-foreground">Cookie Policy</Link>
           <span>© {new Date().getFullYear()} Advaya.ai</span>
           <span className="inline-flex items-center gap-1.5">
             <span className="h-1 w-1 rounded-full bg-accent" /> Designed in India
