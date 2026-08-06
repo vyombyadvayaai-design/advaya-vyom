@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { SiteNav, SiteFooter, PageHero } from "@/components/site-chrome";
 import { joinWaitlist } from "@/lib/waitlist.functions";
+import { ConsentCheckbox } from "@/components/legal";
 
 export const Route = createFileRoute("/waitlist")({
   head: () => ({
