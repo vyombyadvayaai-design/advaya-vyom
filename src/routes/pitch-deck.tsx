@@ -1266,10 +1266,10 @@ function Slide20() {
           </div>
           <div className="mt-2 text-sm text-aurora font-display">VYOM · You Expressed. I Do.</div>
           <a
-            href="mailto:hello@advaya.ai"
+            href="mailto:vyombyadvayaai@gmail.com"
             className="mt-4 inline-flex items-center gap-2 text-sm text-accent hover:text-accent/80"
           >
-            <Mail className="w-4 h-4" /> hello@advaya.ai
+            <Mail className="w-4 h-4" /> vyombyadvayaai@gmail.com
           </a>
         </div>
       </div>

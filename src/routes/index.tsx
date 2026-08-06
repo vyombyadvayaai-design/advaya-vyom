@@ -1240,7 +1240,7 @@ function Social() {
       href: "https://www.instagram.com/ashhvision?igsh=djg1Mnlmb2UxNW04",
     },
     { icon: Twitter, t: "X", href: "https://x.com/ashh_vision" },
-    { icon: Mail, t: "Email", href: "mailto:hello@advaya.ai" },
+    { icon: Mail, t: "Email", href: "mailto:vyombyadvayaai@gmail.com" },
   ];
   return (
     <section className="relative py-16">
@@ -1287,14 +1287,14 @@ function Contact() {
           <FadeIn delay={0.1}>
             <div className="grid gap-3">
               <a
-                href="mailto:hello@advaya.ai"
+                href="mailto:vyombyadvayaai@gmail.com"
                 className="glass flex items-center justify-between rounded-2xl p-6 transition hover:border-white/20"
               >
                 <div>
                   <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
                     Email
                   </div>
-                  <div className="mt-1 text-lg text-foreground">hello@advaya.ai</div>
+                  <div className="mt-1 text-lg text-foreground">vyombyadvayaai@gmail.com</div>
                 </div>
                 <Mail className="h-5 w-5 text-accent" strokeWidth={1.5} />
               </a>

@@ -439,11 +439,11 @@ function PressKit() {
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             <a
-              href="mailto:hello@advaya.ai"
+              href="mailto:vyombyadvayaai@gmail.com"
               className="flex items-center gap-3 rounded-lg border border-white/10 px-4 py-3 text-sm text-foreground transition hover:border-white/30"
             >
               <Mail className="h-4 w-4 text-muted-foreground" />
-              hello@advaya.ai
+              vyombyadvayaai@gmail.com
             </a>
             <a
               href="https://www.instagram.com/ashhvision?igsh=djg1Mnlmb2UxNW04"
@@ -464,11 +464,11 @@ function PressKit() {
               @ashh_vision
             </a>
             <a
-              href="mailto:press@advaya.ai"
+              href="mailto:vyombyadvayaai@gmail.com"
               className="flex items-center gap-3 rounded-lg border border-white/10 px-4 py-3 text-sm text-foreground transition hover:border-white/30"
             >
               <Mail className="h-4 w-4 text-muted-foreground" />
-              press@advaya.ai
+              vyombyadvayaai@gmail.com
             </a>
           </div>
         </div>
