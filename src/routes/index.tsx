@@ -1105,51 +1105,61 @@ function Waitlist() {
                   <p className="text-sm text-foreground">{message}</p>
                 </div>
               ) : (
-                <form
-                  onSubmit={submit}
-                  className="glass mx-auto mt-10 flex max-w-xl flex-col gap-2 rounded-3xl p-2 sm:flex-row sm:rounded-full"
-                >
-                  <label htmlFor="waitlist-email" className="sr-only">
-                    Email address
-                  </label>
-                  <input
-                    type="text"
-                    name="website"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    aria-hidden="true"
-                    value={website}
-                    onChange={(e) => setWebsite(e.target.value)}
-                    className="hidden"
-                  />
-                  <input
-                    id="waitlist-email"
-                    type="email"
-                    name="email"
-                    required
-                    maxLength={320}
-                    autoComplete="email"
-                    inputMode="email"
-                    spellCheck={false}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@company.com"
-                    aria-invalid={state === "error"}
-                    className="flex-1 rounded-full bg-transparent px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
-                  />
+                <div className="mx-auto mt-10 max-w-xl">
+                  <form
+                    onSubmit={submit}
+                    className="glass flex flex-col gap-2 rounded-3xl p-2 sm:flex-row sm:rounded-full"
+                  >
+                    <label htmlFor="waitlist-email" className="sr-only">
+                      Email address
+                    </label>
+                    <input
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                      className="hidden"
+                    />
+                    <input
+                      id="waitlist-email"
+                      type="email"
+                      name="email"
+                      required
+                      maxLength={320}
+                      autoComplete="email"
+                      inputMode="email"
+                      spellCheck={false}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="you@company.com"
+                      aria-invalid={state === "error"}
+                      className="flex-1 rounded-full bg-transparent px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                    />
 
-                  <button type="submit" disabled={state === "loading"} className="btn-primary shrink-0 disabled:opacity-70">
-                    {state === "loading" ? (
-                      <>
-                        <Loader2 className="h-4 w-4 animate-spin" /> Joining…
-                      </>
-                    ) : (
-                      <>
-                        Request access <ArrowRight className="h-4 w-4" />
-                      </>
-                    )}
-                  </button>
-                </form>
+                    <button type="submit" disabled={state === "loading"} className="btn-primary shrink-0 disabled:opacity-70">
+                      {state === "loading" ? (
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin" /> Joining…
+                        </>
+                      ) : (
+                        <>
+                          Request access <ArrowRight className="h-4 w-4" />
+                        </>
+                      )}
+                    </button>
+                  </form>
+                  <div className="mt-5 px-2">
+                    <ConsentCheckbox
+                      id="home-consent"
+                      checked={consent}
+                      onChange={setConsent}
+                      error={state === "error" && !consent}
+                    />
+                  </div>
+                </div>
               )}
               <p className={`mt-4 text-xs ${state === "error" ? "text-destructive" : "text-muted-foreground"}`}>
                 {state === "error" ? message : "No spam. Occasional updates on our progress."}
