@@ -38,6 +38,7 @@ import {
 } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { joinWaitlist } from "@/lib/waitlist.functions";
+import { ConsentCheckbox } from "@/components/legal";
 import { SiteNav } from "@/components/site-chrome";
 import { TechStack, Signals, FounderLetter } from "@/components/home-sections";
 import {
@@ -1043,6 +1044,7 @@ function Waitlist() {
   const join = useServerFn(joinWaitlist);
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState("");
+  const [consent, setConsent] = useState(false);
   const [state, setState] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [message, setMessage] = useState("");
   const startedAtRef = useRef<number>(Date.now());
@@ -1053,6 +1055,11 @@ function Waitlist() {
     if (!/^[^\s@]+@[^\s@.]+\.[^\s@]{2,}$/.test(value)) {
       setState("error");
       setMessage("Please enter a valid email address.");
+      return;
+    }
+    if (!consent) {
+      setState("error");
+      setMessage("Please accept the Privacy Policy consent to continue.");
       return;
     }
     setState("loading");
