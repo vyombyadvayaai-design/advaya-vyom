@@ -20,6 +20,7 @@ import { Route as PitchDeckRouteImport } from './routes/pitch-deck'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as InvestorsRouteImport } from './routes/investors'
 import { Route as EcosystemRouteImport } from './routes/ecosystem'
+import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as CompanyRouteImport } from './routes/company'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
@@ -81,6 +82,11 @@ const EcosystemRoute = EcosystemRouteImport.update({
   path: '/ecosystem',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CompanyRoute = CompanyRouteImport.update({
   id: '/company',
   path: '/company',
@@ -113,6 +119,7 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/company': typeof CompanyRoute
+  '/cookies': typeof CookiesRoute
   '/ecosystem': typeof EcosystemRoute
   '/investors': typeof InvestorsRoute
   '/mcp': typeof McpRoute
@@ -131,6 +138,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/company': typeof CompanyRoute
+  '/cookies': typeof CookiesRoute
   '/ecosystem': typeof EcosystemRoute
   '/investors': typeof InvestorsRoute
   '/mcp': typeof McpRoute
@@ -150,6 +158,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/company': typeof CompanyRoute
+  '/cookies': typeof CookiesRoute
   '/ecosystem': typeof EcosystemRoute
   '/investors': typeof InvestorsRoute
   '/mcp': typeof McpRoute
@@ -170,6 +179,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/company'
+    | '/cookies'
     | '/ecosystem'
     | '/investors'
     | '/mcp'
@@ -188,6 +198,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/company'
+    | '/cookies'
     | '/ecosystem'
     | '/investors'
     | '/mcp'
@@ -206,6 +217,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/company'
+    | '/cookies'
     | '/ecosystem'
     | '/investors'
     | '/mcp'
@@ -225,6 +237,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CompanyRoute: typeof CompanyRoute
+  CookiesRoute: typeof CookiesRoute
   EcosystemRoute: typeof EcosystemRoute
   InvestorsRoute: typeof InvestorsRoute
   McpRoute: typeof McpRoute
@@ -320,6 +333,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EcosystemRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/company': {
       id: '/company'
       path: '/company'
@@ -361,6 +381,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CompanyRoute: CompanyRoute,
+  CookiesRoute: CookiesRoute,
   EcosystemRoute: EcosystemRoute,
   InvestorsRoute: InvestorsRoute,
   McpRoute: McpRoute,
