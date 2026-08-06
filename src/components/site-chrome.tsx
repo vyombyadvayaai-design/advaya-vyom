@@ -489,9 +489,9 @@ export function SiteFooter() {
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-white/5 pt-8 text-xs text-muted-foreground md:flex-row md:items-center">
           <span>© {new Date().getFullYear()} Advaya.ai — All rights reserved.</span>
           <div className="flex flex-wrap items-center gap-5">
-            <a href="#" className="transition hover:text-foreground">Privacy</a>
-            <a href="#" className="transition hover:text-foreground">Terms</a>
-            <a href="#" className="transition hover:text-foreground">Cookies</a>
+            <Link to="/privacy" className="transition hover:text-foreground">Privacy Policy</Link>
+            <Link to="/terms" className="transition hover:text-foreground">Terms of Service</Link>
+            <Link to="/cookies" className="transition hover:text-foreground">Cookie Policy</Link>
             <span className="inline-flex items-center gap-1.5">
               <span className="h-1 w-1 rounded-full bg-accent" /> Designed in India
             </span>

@@ -154,7 +154,7 @@ function CompanyPage() {
             <h3 className="mt-3 font-display text-3xl">Say hello.</h3>
             <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-3"><MapPin className="h-4 w-4 text-accent" /> Lucknow, Uttar Pradesh · India</li>
-              <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-accent" /> hello@advaya.ai</li>
+              <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-accent" /> vyombyadvayaai@gmail.com</li>
             </ul>
           </div>
         </div>

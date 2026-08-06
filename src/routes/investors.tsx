@@ -65,7 +65,7 @@ function InvestorsPage() {
       >
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Link to="/pitch-deck" className="btn-primary">View the pitch deck <ArrowRight className="h-4 w-4" /></Link>
-          <a href="mailto:hello@advaya.ai?subject=VYOM%20Investor%20Deck" className="btn-ghost">
+          <a href="mailto:vyombyadvayaai@gmail.com?subject=VYOM%20Investor%20Deck" className="btn-ghost">
             <Mail className="h-4 w-4" /> Request investor deck
           </a>
         </div>
@@ -148,8 +148,8 @@ function InvestorsPage() {
             Reach out directly. We reply to every serious note.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a href="mailto:hello@advaya.ai?subject=VYOM%20Investor%20Introduction" className="btn-primary">
-              <Mail className="h-4 w-4" /> hello@advaya.ai
+            <a href="mailto:vyombyadvayaai@gmail.com?subject=VYOM%20Investor%20Introduction" className="btn-primary">
+              <Mail className="h-4 w-4" /> vyombyadvayaai@gmail.com
             </a>
             <Link to="/press-kit" className="btn-ghost"><FileText className="h-4 w-4" /> Press kit</Link>
           </div>

@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { SiteNav, SiteFooter, PageHero } from "@/components/site-chrome";
 import { joinWaitlist } from "@/lib/waitlist.functions";
+import { ConsentCheckbox } from "@/components/legal";
 
 export const Route = createFileRoute("/waitlist")({
   head: () => ({
@@ -30,6 +31,7 @@ function WaitlistPage() {
   const submit = useServerFn(joinWaitlist);
   const [state, setState] = useState<"idle" | "loading" | "done" | "error">("idle");
   const [message, setMessage] = useState<string>("");
+  const [consent, setConsent] = useState(false);
   const startedAtRef = useRef<number>(Date.now());
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -39,6 +41,11 @@ function WaitlistPage() {
     if (!/^[^\s@]+@[^\s@.]+\.[^\s@]{2,}$/.test(email)) {
       setState("error");
       setMessage("Please enter a valid email address.");
+      return;
+    }
+    if (!consent) {
+      setState("error");
+      setMessage("Please accept the Privacy Policy consent to continue.");
       return;
     }
     setState("loading");
@@ -114,6 +121,11 @@ function WaitlistPage() {
                     <option value="talent">Interested in joining the team</option>
                   </select>
                 </div>
+                <ConsentCheckbox
+                  checked={consent}
+                  onChange={setConsent}
+                  error={state === "error" && !consent}
+                />
               </div>
               <button
                 type="submit"

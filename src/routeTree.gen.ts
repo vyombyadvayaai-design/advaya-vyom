@@ -11,13 +11,16 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WaitlistRouteImport } from './routes/waitlist'
 import { Route as VisionRouteImport } from './routes/vision'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TechnologyRouteImport } from './routes/technology'
 import { Route as ProductRouteImport } from './routes/product'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PressKitRouteImport } from './routes/press-kit'
 import { Route as PitchDeckRouteImport } from './routes/pitch-deck'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as InvestorsRouteImport } from './routes/investors'
 import { Route as EcosystemRouteImport } from './routes/ecosystem'
+import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as CompanyRouteImport } from './routes/company'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
@@ -34,6 +37,11 @@ const VisionRoute = VisionRouteImport.update({
   path: '/vision',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TechnologyRoute = TechnologyRouteImport.update({
   id: '/technology',
   path: '/technology',
@@ -42,6 +50,11 @@ const TechnologyRoute = TechnologyRouteImport.update({
 const ProductRoute = ProductRouteImport.update({
   id: '/product',
   path: '/product',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PressKitRoute = PressKitRouteImport.update({
@@ -67,6 +80,11 @@ const InvestorsRoute = InvestorsRouteImport.update({
 const EcosystemRoute = EcosystemRouteImport.update({
   id: '/ecosystem',
   path: '/ecosystem',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompanyRoute = CompanyRouteImport.update({
@@ -101,13 +119,16 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/company': typeof CompanyRoute
+  '/cookies': typeof CookiesRoute
   '/ecosystem': typeof EcosystemRoute
   '/investors': typeof InvestorsRoute
   '/mcp': typeof McpRoute
   '/pitch-deck': typeof PitchDeckRoute
   '/press-kit': typeof PressKitRoute
+  '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
   '/technology': typeof TechnologyRoute
+  '/terms': typeof TermsRoute
   '/vision': typeof VisionRoute
   '/waitlist': typeof WaitlistRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -117,13 +138,16 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/company': typeof CompanyRoute
+  '/cookies': typeof CookiesRoute
   '/ecosystem': typeof EcosystemRoute
   '/investors': typeof InvestorsRoute
   '/mcp': typeof McpRoute
   '/pitch-deck': typeof PitchDeckRoute
   '/press-kit': typeof PressKitRoute
+  '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
   '/technology': typeof TechnologyRoute
+  '/terms': typeof TermsRoute
   '/vision': typeof VisionRoute
   '/waitlist': typeof WaitlistRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -134,13 +158,16 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/company': typeof CompanyRoute
+  '/cookies': typeof CookiesRoute
   '/ecosystem': typeof EcosystemRoute
   '/investors': typeof InvestorsRoute
   '/mcp': typeof McpRoute
   '/pitch-deck': typeof PitchDeckRoute
   '/press-kit': typeof PressKitRoute
+  '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
   '/technology': typeof TechnologyRoute
+  '/terms': typeof TermsRoute
   '/vision': typeof VisionRoute
   '/waitlist': typeof WaitlistRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -152,13 +179,16 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/company'
+    | '/cookies'
     | '/ecosystem'
     | '/investors'
     | '/mcp'
     | '/pitch-deck'
     | '/press-kit'
+    | '/privacy'
     | '/product'
     | '/technology'
+    | '/terms'
     | '/vision'
     | '/waitlist'
     | '/.mcp/list-tools'
@@ -168,13 +198,16 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/company'
+    | '/cookies'
     | '/ecosystem'
     | '/investors'
     | '/mcp'
     | '/pitch-deck'
     | '/press-kit'
+    | '/privacy'
     | '/product'
     | '/technology'
+    | '/terms'
     | '/vision'
     | '/waitlist'
     | '/.mcp/list-tools'
@@ -184,13 +217,16 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/company'
+    | '/cookies'
     | '/ecosystem'
     | '/investors'
     | '/mcp'
     | '/pitch-deck'
     | '/press-kit'
+    | '/privacy'
     | '/product'
     | '/technology'
+    | '/terms'
     | '/vision'
     | '/waitlist'
     | '/.mcp/list-tools'
@@ -201,13 +237,16 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CompanyRoute: typeof CompanyRoute
+  CookiesRoute: typeof CookiesRoute
   EcosystemRoute: typeof EcosystemRoute
   InvestorsRoute: typeof InvestorsRoute
   McpRoute: typeof McpRoute
   PitchDeckRoute: typeof PitchDeckRoute
   PressKitRoute: typeof PressKitRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProductRoute: typeof ProductRoute
   TechnologyRoute: typeof TechnologyRoute
+  TermsRoute: typeof TermsRoute
   VisionRoute: typeof VisionRoute
   WaitlistRoute: typeof WaitlistRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
@@ -231,6 +270,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VisionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/technology': {
       id: '/technology'
       path: '/technology'
@@ -243,6 +289,13 @@ declare module '@tanstack/react-router' {
       path: '/product'
       fullPath: '/product'
       preLoaderRoute: typeof ProductRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/press-kit': {
@@ -278,6 +331,13 @@ declare module '@tanstack/react-router' {
       path: '/ecosystem'
       fullPath: '/ecosystem'
       preLoaderRoute: typeof EcosystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/company': {
@@ -321,13 +381,16 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CompanyRoute: CompanyRoute,
+  CookiesRoute: CookiesRoute,
   EcosystemRoute: EcosystemRoute,
   InvestorsRoute: InvestorsRoute,
   McpRoute: McpRoute,
   PitchDeckRoute: PitchDeckRoute,
   PressKitRoute: PressKitRoute,
+  PrivacyRoute: PrivacyRoute,
   ProductRoute: ProductRoute,
   TechnologyRoute: TechnologyRoute,
+  TermsRoute: TermsRoute,
   VisionRoute: VisionRoute,
   WaitlistRoute: WaitlistRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
