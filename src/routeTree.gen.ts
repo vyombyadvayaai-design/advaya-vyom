@@ -13,6 +13,7 @@ import { Route as WaitlistRouteImport } from './routes/waitlist'
 import { Route as VisionRouteImport } from './routes/vision'
 import { Route as TechnologyRouteImport } from './routes/technology'
 import { Route as ProductRouteImport } from './routes/product'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PressKitRouteImport } from './routes/press-kit'
 import { Route as PitchDeckRouteImport } from './routes/pitch-deck'
 import { Route as McpRouteImport } from './routes/mcp'
@@ -42,6 +43,11 @@ const TechnologyRoute = TechnologyRouteImport.update({
 const ProductRoute = ProductRouteImport.update({
   id: '/product',
   path: '/product',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PressKitRoute = PressKitRouteImport.update({
@@ -106,6 +112,7 @@ export interface FileRoutesByFullPath {
   '/mcp': typeof McpRoute
   '/pitch-deck': typeof PitchDeckRoute
   '/press-kit': typeof PressKitRoute
+  '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
   '/technology': typeof TechnologyRoute
   '/vision': typeof VisionRoute
@@ -122,6 +129,7 @@ export interface FileRoutesByTo {
   '/mcp': typeof McpRoute
   '/pitch-deck': typeof PitchDeckRoute
   '/press-kit': typeof PressKitRoute
+  '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
   '/technology': typeof TechnologyRoute
   '/vision': typeof VisionRoute
@@ -139,6 +147,7 @@ export interface FileRoutesById {
   '/mcp': typeof McpRoute
   '/pitch-deck': typeof PitchDeckRoute
   '/press-kit': typeof PressKitRoute
+  '/privacy': typeof PrivacyRoute
   '/product': typeof ProductRoute
   '/technology': typeof TechnologyRoute
   '/vision': typeof VisionRoute
@@ -157,6 +166,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/pitch-deck'
     | '/press-kit'
+    | '/privacy'
     | '/product'
     | '/technology'
     | '/vision'
@@ -173,6 +183,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/pitch-deck'
     | '/press-kit'
+    | '/privacy'
     | '/product'
     | '/technology'
     | '/vision'
@@ -189,6 +200,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/pitch-deck'
     | '/press-kit'
+    | '/privacy'
     | '/product'
     | '/technology'
     | '/vision'
@@ -206,6 +218,7 @@ export interface RootRouteChildren {
   McpRoute: typeof McpRoute
   PitchDeckRoute: typeof PitchDeckRoute
   PressKitRoute: typeof PressKitRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProductRoute: typeof ProductRoute
   TechnologyRoute: typeof TechnologyRoute
   VisionRoute: typeof VisionRoute
@@ -243,6 +256,13 @@ declare module '@tanstack/react-router' {
       path: '/product'
       fullPath: '/product'
       preLoaderRoute: typeof ProductRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/press-kit': {
@@ -326,6 +346,7 @@ const rootRouteChildren: RootRouteChildren = {
   McpRoute: McpRoute,
   PitchDeckRoute: PitchDeckRoute,
   PressKitRoute: PressKitRoute,
+  PrivacyRoute: PrivacyRoute,
   ProductRoute: ProductRoute,
   TechnologyRoute: TechnologyRoute,
   VisionRoute: VisionRoute,
